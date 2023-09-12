@@ -1,0 +1,104 @@
+study_id,first_author,publication_year,doi,question_id,question_description,modality
+id_010,bailey,2003,10.1017/S0952836903003728,q_013,is call length associated with reply latency in duets?,Only acoustic
+id_012,boncoraglio,2007,10.1111/j.1365-2435.2006.01207.x,q_015,are song properties associated with habitat structure?,Only acoustic
+id_020,de_jong,2012,10.1093/beheco/ars094,q_024,is frequency of courtship associated with competitor-to-resource ratio?,Visual and acoustic
+id_025,dougherty,2021,10.1111/ele.13679,q_032,are sexual signalling and responsiviness to sexual signals context-dependent?,"Visual, acoustic, and others"
+id_026,dougherty,2021,10.1038/s41559-021-01409-z,q_033,is sexual signalling associated with individual state?,"Visual, acoustic, and others"
+id_026,dougherty,2021,10.1038/s41559-021-01409-z,q_034,is sexual signalling associated with individual state?,"Visual, acoustic, and others"
+id_030,evans,2010,10.1111/j.1095-8312.2010.01548.x,q_037,is plumage colour expression associated with age?,Only visual
+id_030,evans,2010,10.1111/j.1095-8312.2010.01548.x,q_038,is plumage colour expression associated with age?,Only visual
+id_031,fiske,1998,10.1093/beheco/9.4.328,q_039,is display frequency and expression of ornaments and other traits associated with mating success for lekking individuals?,Visual and acoustic
+id_031,fiske,1998,10.1093/beheco/9.4.328,q_040,is display frequency and expression of ornaments and other traits associated with mating success for lekking individuals?,Visual and acoustic
+id_034,garamszegi,2004,10.1016/j.brainresrev.2003.12.001,q_043,is brain size associated with song traits?,Only acoustic
+id_036,garamszegi,2005,10.1007/s00265-005-0041-8,q_044,are song traits associated with parasite prevalence/immunity function?,Only acoustic
+id_036,garamszegi,2005,10.1007/s00265-005-0041-8,q_045,are song traits associated with parasite prevalence/immunity function?,Only acoustic
+id_035,garamszegi,2004,10.1093/beheco/arh041,q_046,are song traits associated with extra-pair paternity?,Only acoustic
+id_037,garamszegi,2007,10.1111/j.1439-0310.2007.01337.x,q_048,is song repertoire size associated with age?,Only acoustic
+id_041,gontard-danek,1999,10.1093/beheco/10.5.476,q_053,are visual sexual signals associated with paternity?,Only visual
+id_041,gontard-danek,1999,10.1093/beheco/10.5.476,q_054,are visual sexual signals associated with paternity?,Only visual
+id_041,gontard-danek,1999,10.1093/beheco/10.5.476,q_055,are visual sexual signals associated with individual attractiveness?,Only visual
+id_041,gontard-danek,1999,10.1093/beheco/10.5.476,q_056,are visual sexual signals associated with individual attractiveness?,Only visual
+id_041,gontard-danek,1999,10.1093/beheco/10.5.476,q_057,are visual sexual signals associated with mating success?,Only visual
+id_045,griffith,2006,10.1016/j.anbehav.2005.07.016,q_061,are ornaments (melanin- and carotenoid-based) associated with individual condition?,Only visual
+id_046,guindre-parker,2014,10.1111/j.1600-048X.2013.00190.x,q_062,is plumage melanin associated with individual state?,Only visual
+id_047,hamilton,1997,10.1163/156853997X00485,q_063,is sexual signal expression associated with parasite load?,Only visual
+id_051,hegyi,2015,10.1007/s00114-015-1311-6,q_068,is plumage colour expression associated with feeding rate (i.e. parental care)?,Only visual
+id_052,hernandez,2021,10.1098/rsbl.2021.0283,q_069,is ornament colour associated with individual condition and reproductive performance?,Only visual
+id_052,hernandez,2021,10.1098/rsbl.2021.0283,q_070,is ornament colour associated with individual condition and reproductive performance?,Only visual
+id_052,hernandez,2021,10.1098/rsbl.2021.0283,q_071,is ornament colour associated with mate attractiveness (i.e. success in mate choice assays)?,Only visual
+id_062,jennions,2001,10.1086/393743,q_083,is mating success and traits connected to it associated with survival?,Visual and acoustic
+id_070,koch,2016,10.1086/684485,q_096,is carotenoid diet supplementation associated with ornament colour?,Only visual
+id_070,koch,2016,10.1086/684485,q_097,is carotenoid diet supplementation associated with ornament colour?,Only visual
+id_071,kraaijeveld,2011,10.1111/j.1469-185X.2010.00150.x,q_098,are sexually selected traits (primary and secondary) associated with speciation rate?,Visual and acoustic
+id_073,leung,1996,10.1080/11956860.1996.11682357,q_101,is asymmetry of sexual traits associated with fitness measures?,Only visual
+id_081,macedo-rego_chapter3,2020,10.11606/T.41.2020.tde-30112020-101600,q_112,are ornaments associated with reproductive success?,Unclear
+id_085,mautz,2013,10.1111/brv.12022,q_119,is the expression of secondary sexual traits associated with sperm quality?,Only visual
+id_086,mclean,2012,10.1111/j.1420-9101.2012.02533.x,q_120,is call frequency associated with body size?,Only acoustic
+id_086,mclean,2012,10.1111/j.1420-9101.2012.02533.x,q_121,is call frequency associated with body size?,Only acoustic
+id_086,mclean,2012,10.1111/j.1420-9101.2012.02533.x,q_122,is call frequency associated with individual attractiveness?,Only acoustic
+id_086,mclean,2012,10.1111/j.1420-9101.2012.02533.x,q_123,is call frequency associated with individual attractiveness?,Only acoustic
+id_093,moller,2001,10.1007/s001140100255,q_126,are secondary sexual traits associated with fitness measures?,Unclear
+id_088,meunier,2011,10.1007/s00265-010-1092-z,q_129,are melanin-based colour traits (larger or darker) associated with fitness measures?,Only visual
+id_092,moller,1999,10.1098/rspb.1999.0607,q_130,are secondary sexual traits associated with offspring viability?,Unclear
+id_091,moller,1999,10.1086/392949,q_131,are secondary sexual traits associated with the intensity of parasitism or measures of immune function?,Unclear
+id_094,moore,2016,10.1093/beheco/arv195,q_133,are secondary sexual traits associated with stress estimates?,Visual and acoustic
+id_097,nakagawa,2007,10.1093/beheco/arm050,q_136,is bib size associated with other traits and individual quality?,Only visual
+id_097,nakagawa,2007,10.1093/beheco/arm050,q_137,is bib size associated with other traits and individual quality?,Only visual
+id_097,nakagawa,2007,10.1093/beheco/arm050,q_138,is bib size associated with aggression?,Only visual
+id_097,nakagawa,2007,10.1093/beheco/arm050,q_139,is bib size associated with aggression?,Only visual
+id_097,nakagawa,2007,10.1093/beheco/arm050,q_140,is bib size associated with paternity and reproductive success?,Only visual
+id_099,nolazco,2022,10.1038/s41467-022-33548-7,q_144,are visual ornaments associated with fitness measures?,Only visual
+id_099,nolazco,2022,10.1038/s41467-022-33548-7,q_145,are visual ornaments associated with fitness measures?,Only visual
+id_100,ord,2009,10.1086/605372,q_146,is species identity associated with sexual signal response?,"Visual, acoustic, and others"
+id_101,ord,2011,10.1111/j.1558-5646.2011.01319.x,q_147,is species identity associated with sexual signal response?,"Visual, acoustic, and others"
+id_106,parker,2013,10.1111/brv.12013,q_149,is plumage colour associated with aggression/dominance rank?,Only visual
+id_106,parker,2013,10.1111/brv.12013,q_150,is plumage colour associated with aggression/dominance rank?,Only visual
+id_107,parker,2018,10.1016/j.anbehav.2018.05.023,q_152,is species or population identity associated with sexual signal response?,Only acoustic
+id_104,parker,2003,10.1080/08927014.2003.9522691,q_153,is individual attractiveness associated with ornaments?,Only visual
+id_104,parker,2003,10.1080/08927014.2003.9522691,q_154,is individual attractiveness associated with ornaments?,Only visual
+id_106,parker,2013,10.1111/brv.12013,q_155,is plumage colour associated with other traits?,Only visual
+id_106,parker,2013,10.1111/brv.12013,q_156,is plumage colour associated with other traits?,Only visual
+id_106,parker,2013,10.1111/brv.12013,q_157,is plumage colour associated with attractiveness?,Only visual
+id_106,parker,2013,10.1111/brv.12013,q_158,is plumage colour associated with attractiveness?,Only visual
+id_105,parker,2006,10.1093/beheco/arl041,q_159,are condition proxies associated with song traits?,Only acoustic
+id_105,parker,2006,10.1093/beheco/arl041,q_160,are condition proxies associated with song traits?,Only acoustic
+id_106,parker,2013,10.1111/brv.12013,q_161,is plumage colour associated with intra- or extra-pair paternity?,Only visual
+id_108,parris,2013,10.1086/671906,q_162,does acoustic signal frequency shifts with background noise depending on the original frequency of the signal?,Only acoustic
+id_113,pomiankowski,1995,10.1098/rspb.1995.0054,q_171,is additive genetic variation associated with trait function (secondary sexual vs non-sexual traits)?,Unclear
+id_115,prokop,2012,10.1111/j.1558-5646.2012.01654.x,q_174,are secondary sexual traits or traits related to mating success associated with fitness?,"Visual, acoustic, and others"
+id_115,prokop,2012,10.1111/j.1558-5646.2012.01654.x,q_175,are secondary sexual traits heritable?,"Visual, acoustic, and others"
+id_116,prokuda,2014,10.1111/jeb.12483,q_177,are sexual traits heritable?,"Visual, acoustic, and others"
+id_121,robinson,2019,10.1002/ece3.5418,q_182,is song elaboration associated with reproductive success?,Only acoustic
+id_121,robinson,2019,10.1002/ece3.5418,q_183,is song elaboration associated with reproductive success?,Only acoustic
+id_122,rodriguez,2019,10.1093/icb/icz039,q_184,are allometric slopes associated with trait function (courtship vs aggressive)?,Only visual
+id_123,romano,2017,10.1111/brv.12297,q_185,are ornaments associated with individual quality and fitness measures?,Only visual
+id_123,romano,2017,10.1111/brv.12297,q_186,are ornaments associated with individual quality and fitness measures?,Only visual
+id_124,romano,2017,10.1111/jeb.13151,q_187,is ornament expression associated with survival?,Only visual
+id_124,romano,2017,10.1111/jeb.13151,q_188,is ornament expression associated with survival?,Only visual
+id_123,romano,2017,10.1111/brv.12297,q_189,are ornaments associated with mating success?,Only visual
+id_123,romano,2017,10.1111/brv.12297,q_190,are ornaments associated with paternity?,Only visual
+id_123,romano,2017,10.1111/brv.12297,q_191,are ornaments associated with paternity?,Only visual
+id_126,sanchez-tojar,2018,10.7554/eLife.37385,q_194,is bib size associated with dominance?,Only visual
+id_126,sanchez-tojar,2018,10.7554/eLife.37385,q_195,is bib size associated with dominance?,Only visual
+id_127,santos,2011,10.1016/j.anbehav.2011.03.022,q_196,are plumage traits associated with dominance,Only visual
+id_128,seguin,2012,10.1371/journal.pone.0037785,q_197,is band colour associated with courtship rate of their bearer?,Only visual
+id_131,simons,2011,10.1093/beheco/arr043,q_200,is song rate associated with bill color?,Visual and acoustic
+id_131,simons,2011,10.1093/beheco/arr043,q_201,is song rate associated with bill color?,Visual and acoustic
+id_131,simons,2011,10.1093/beheco/arr043,q_202,are individuals with redder bills more attractive?,Only visual
+id_132,simons,2012,10.1371/journal.pone.0043088,q_203,is redness of sexual traits associated with carotenoid level in plasma and immunocompetence?,Only visual
+id_135,soma,2011,10.1093/beheco/arq219,q_207,are song traits associated with mating and reproductive success?,Only acoustic
+id_138,street,2016,10.1016/j.anbehav.2015.11.023,q_210,is swelling size associated with other traits?,Only visual
+id_138,street,2016,10.1016/j.anbehav.2015.11.023,q_211,is swelling size associated with other traits?,Only visual
+id_139,thornhill,1998,10.1093/beheco/9.6.546,q_213,is asymmetry and size of sexual and non-sexual traits associated with attractiveness or mating success?,Only visual
+id_143,voje,2016,10.1086/684159,q_217,is trait allometry associated with trait type (primary sexual traits vs secondary sexual traits vs natural selected traits)?,Only visual
+id_145,weaver,2018,10.1038/s41467-017-02649-z,q_219,is plumage colour associated with individual traits?,Only visual
+id_146,weir,2011,10.1086/657918,q_221,is operational sex ratio associated with courtship?,Unclear
+id_148,white,2022,10.1098/rspb.2022.0444,q_223,is sexual signalling associated with predators and parasites preferences and risk of eavesdropping?,"Visual, acoustic, and others"
+id_147,white,2020,10.1098/rsbl.2020.0001,q_224,is structural colour associated with individual quality?,Only visual
+id_147,white,2020,10.1098/rsbl.2020.0001,q_225,is structural colour associated with individual quality?,Only visual
+id_150,yasukawa,2010,10.1111/j.1557-9263.2009.00258.x,q_228,is epaulet size or colour associated with dominance rank?,Only visual
+id_150,yasukawa,2010,10.1111/j.1557-9263.2009.00258.x,q_229,is epaulet size or colour associated with dominance rank?,Only visual
+id_150,yasukawa,2010,10.1111/j.1557-9263.2009.00258.x,q_230,is epaulet size or colour associated with attractiveness or mating success?,Only visual
+id_150,yasukawa,2010,10.1111/j.1557-9263.2009.00258.x,q_231,is epaulet size or colour associated with attractiveness or mating success?,Only visual
+id_150,yasukawa,2010,10.1111/j.1557-9263.2009.00258.x,q_232,is epaulet size or colour associated with within- and extra-pair paternity or offspring?,Only visual
+id_150,yasukawa,2010,10.1111/j.1557-9263.2009.00258.x,q_233,is epaulet size or colour associated with within- and extra-pair paternity or offspring?,Only visual

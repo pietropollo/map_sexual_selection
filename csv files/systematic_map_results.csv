@@ -1,0 +1,153 @@
+study_id,first_author,publication_year,doi,effect_size_statistics,number_studies,number_effect_sizes,number_species,taxonomic_scope,taxonomic_focus,taxonomic_proportions_total,humans_included,study_design,traditional_ma
+id_001,aguiar_del_matto,2018,10.11606/D.41.2018.tde-20092018-145433,"Mean Standardised Difference (e.g., Cohen's d, Hedge's g)",50,183,29,Specific group,actinopterygii,actinopterygii 100%; NA,No,Mixed,Yes
+id_002,akcai,2007,NA,"Correlations (e.g., Fisher's z, Pearson's r)",45,NA,NA,Specific group,aves,aves 100%; NA,No,Unclear,Yes
+id_003,albrecht,2006,10.1086/502633,proportion of extra-pair fertilizations (raw measurements),NA,14,14,Specific group,aves,aves 100%; NA,No,Unclear,No
+id_004,alissa,2018,10.11606/D.41.2018.tde-23102018-090541,"Correlations (e.g., Fisher's z, Pearson's r), lnCVR",45,226,31,All taxa,NA,actinopterygii 58.1%; aves 16.1%,No,Mixed,Yes
+id_005,anthes,2017,10.1111/2041-210X.12707,"Mean Standardised Difference (e.g., Cohen's d, Hedge's g), lnCVR",33,148,29,All taxa,NA,insecta 24.1%; amphibia 20.7%,Yes,Unclear,Yes
+id_006,arct,2015,10.1093/beheco/arv004,"Correlations (e.g., Fisher's z, Pearson's r)",39,43,33,Specific group,aves,aves 100%; NA,No,Unclear,No
+id_007,arnqvist,1996,10.1007/BF01237684,"Correlations (e.g., Fisher's z, Pearson's r)",NA,45,7,Specific group,insecta,insecta 100%; NA,No,Observational,Yes
+id_008,arnqvist,2000,10.1006/anbe.2000.1446,response ratio,NA,NA,NA,Specific group,insecta,insecta 100%; NA,No,Experimental,Yes
+id_009,arnqvist,2005,10.1086/429350,dEW; Bf,23,30,12,Specific group,aves,aves 100%; NA,No,Unclear,No
+id_010,bailey,2003,10.1017/S0952836903003728,Unclear,NA,51,50,Specific group,insecta,insecta 100%; NA,No,Unclear,No
+id_011,bernasconi,2005,10.1007/s10682-004-7594-2,"Correlations (e.g., Fisher's z, Pearson's r), coefficient of variation",3,150,150,Specific group,insecta,insecta 100%; NA,No,Unclear,No
+id_012,boncoraglio,2007,10.1111/j.1365-2435.2006.01207.x,"Correlations (e.g., Fisher's z, Pearson's r)",26,NA,NA,Specific group,aves,aves 100%; NA,No,Observational,Yes
+id_013,cally,2019,10.1038/s41467-019-10074-7,"Mean Standardised Difference (e.g., Cohen's d, Hedge's g), lnCVR",65,459,15,All taxa,NA,insecta 66.7%; mammalia 13.4%,No,Experimental,Yes
+id_014,cleasby,2012,10.1111/j.1474-919X.2011.01209.x,"Correlations (e.g., Fisher's z, Pearson's r)",61,NA,NA,Specific group,aves,aves 100%; NA,No,Unclear,Yes
+id_015,crean,2019,10.1111/obr.12827,"Mean Standardised Difference (e.g., Cohen's d, Hedge's g)",52,229,3,Specific group,mammalia,mammalia 100%; NA,No,Experimental,Yes
+id_016,culina,2015,10.1111/brv.12143,"Correlations (e.g., Fisher's z, Pearson's r)",81,437,64,Specific group,aves,aves 100%; NA,No,Observational,Yes
+id_017,culina,2022,10.1098/rsbl.2021.0671,"Correlations (e.g., Fisher's z, Pearson's r)",31,90,24,Specific group,aves,aves 100%; NA,No,Mixed,Yes
+id_018,davies,2020,10.1093/beheco/araa064,"Mean Standardised Difference (e.g., Cohen's d, Hedge's g)",58,158,23,All taxa,NA,actinopterygii 60.9%; aves 13%,No,Experimental,Yes
+id_019,de_boer,2021,10.1038/s41559-021-01453-9,"Mean Standardised Difference (e.g., Cohen's d, Hedge's g)",139,677,88,All taxa,NA,insecta 34.1%; mammalia 30.7%,Yes,Experimental,Yes
+id_020,de_jong,2012,10.1093/beheco/ars094,"Mean Standardised Difference (e.g., Cohen's d, Hedge's g)",22,32,21,All taxa,NA,actinopterygii 76.2%; insecta|malacostraca 9.5%,No,Mixed,No
+id_021,delbarco-trillo,2011,10.1111/j.1420-9101.2011.02293.x,"Mean Standardised Difference (e.g., Cohen's d, Hedge's g)",39,41,37,All taxa,NA,insecta 48.6%; actinopterygii 18.9%,No,Experimental,Yes
+id_022,dharmarathne,2022,10.1093/biolinnean/blab158,sperm in spermathecae (raw data),44,NA,22,Specific group,arachnida,arachnida 100%; NA,No,Unclear,No
+id_023,dougherty,2015,10.1093/beheco/aru125,"Correlations (e.g., Fisher's z, Pearson's r)",38,214,40,All taxa,NA,insecta 52.5%; actinopterygii 27.5%,No,Experimental,Yes
+id_024,dougherty,2016,10.1007/s00265-016-2082-6,selection differential,4,5,1,Single species,insecta,insecta 100%; NA,No,Unclear,Yes
+id_025,dougherty,2021,10.1111/ele.13679,"Correlations (e.g., Fisher's z, Pearson's r)",222,697,117,All taxa,NA,insecta 40.2%; actinopterygii 24.8%,No,Unclear,Yes
+id_026,dougherty,2021,10.1038/s41559-021-01409-z,"Correlations (e.g., Fisher's z, Pearson's r)",228,520,147,All taxa,NA,insecta 39.5%; amphibia 17.7%,No,Mixed,Yes
+id_027,dougherty,2022,10.1111/brv.12846,"Mean Standardised Difference (e.g., Cohen's d, Hedge's g)",103,251,57,All taxa,NA,actinopterygii 55.3%; insecta 33.3%,No,Unclear,Yes
+id_028,dougherty,2023,10.1093/beheco/arac100,"Correlations (e.g., Fisher's z, Pearson's r)",108,250,78,All taxa,NA,insecta 41.2%; actinopterygii 27.9%,No,Mixed,Yes
+id_029,dubois,2002,10.1007/s00265-002-0521-z,"Correlations (e.g., Fisher's z, Pearson's r)",38,38,35,Specific group,aves,aves 100%; NA,No,Mixed,Yes
+id_030,evans,2010,10.1111/j.1095-8312.2010.01548.x,"Correlations (e.g., Fisher's z, Pearson's r)",NA,42,1,Single species,aves,aves 100%; NA,No,Observational,No
+id_031,fiske,1998,10.1093/beheco/9.4.328,"Correlations (e.g., Fisher's z, Pearson's r)",48,NA,27,All taxa,NA,aves 51.8%; amphibia 29.6%,No,Unclear,Yes
+id_032,florin,2002,10.1046/j.1420-9101.2002.00356.x,isolation index Y,25,NA,7,Specific group,insecta,insecta 100%; NA,No,Experimental,No
+id_033,fromonteil,2023,10.1371/journal.pbio.3001916,"Correlations (e.g., Fisher's z, Pearson's r)",84,120,77,All taxa,NA,insecta 22%; actinopterygii 19.5%,Yes,Mixed,Yes
+id_034,garamszegi,2004,10.1016/j.brainresrev.2003.12.001,"Correlations (e.g., Fisher's z, Pearson's r)",12,NA,9,Specific group,aves,aves 100%; NA,No,Unclear,Yes
+id_035,garamszegi,2004,10.1093/beheco/arh041,"Mean Standardised Difference (e.g., Cohen's d, Hedge's g)",10,21,8,Specific group,aves,aves 100%; NA,No,Unclear,Yes
+id_036,garamszegi,2005,10.1007/s00265-005-0041-8,"Correlations (e.g., Fisher's z, Pearson's r)",10,24,7,Specific group,aves,aves 100%; NA,No,Mixed,Yes
+id_037,garamszegi,2007,10.1111/j.1439-0310.2007.01337.x,"Mean Standardised Difference (e.g., Cohen's d, Hedge's g)",12,12,10,Specific group,aves,aves 100%; NA,No,Observational,Yes
+id_038,garcia-roa,2020,10.1111/brv.12632,"lnRR, lnVR; lnCVR",19,49,14,All taxa,NA,insecta 78.5%; actinopterygii 14.3%,No,Experimental,Yes
+id_039,goldberg,2020,10.1098/rspb.2020.1759,"Correlations (e.g., Fisher's z, Pearson's r)",97,253,48,Specific group,actinopterygii,actinopterygii 100%; NA,No,Mixed,Yes
+id_040,gomez-llano,2023,10.1093/evlett/qrac002,"Mean Standardised Difference (e.g., Cohen's d, Hedge's g), lnCVR; lnSD",51,149,32,All taxa,NA,insecta 53.1%; actinopterygii 12.5%,No,Experimental,Yes
+id_041,gontard-danek,1999,10.1093/beheco/10.5.476,"Correlations (e.g., Fisher's z, Pearson's r)",138,NA,79,Specific group,aves,aves 100%; NA,No,Mixed,Yes
+id_042,graham,2015,10.1007/s00265-015-1999-5,"Correlations (e.g., Fisher's z, Pearson's r)",20,32,18,All taxa,NA,gastropoda 72.2%; actionopterygii|clitellata 11.1%,No,Mixed,Yes
+id_043,green,2019,10.1086/701124,"Correlations (e.g., Fisher's z, Pearson's r)",101,282,68,Specific group,amphibia,amphibia 100%; NA,No,Mixed,Yes
+id_044,greenfield,2014,10.1111/evo.12542,"Correlations (e.g., Fisher's z, Pearson's r)",20,20,17,All taxa,NA,insecta 76.5%; actinopterygii 17.7%,No,Experimental,Yes
+id_045,griffith,2006,10.1016/j.anbehav.2005.07.016,"Correlations (e.g., Fisher's z, Pearson's r)",16,56,9,Specific group,aves,aves 100%; NA,No,Experimental,Yes
+id_046,guindre-parker,2014,10.1111/j.1600-048X.2013.00190.x,"Correlations (e.g., Fisher's z, Pearson's r)",26,NA,21,Specific group,aves,aves 100%; NA,No,Unclear,Yes
+id_047,hamilton,1997,10.1163/156853997X00485,"Mean Standardised Difference (e.g., Cohen's d, Hedge's g), Correlations (e.g., Fisher's z, Pearson's r)",33,118,NA,All taxa,NA,NA; NA,No,Mixed,Yes
+id_048,harts,2016,10.1111/evo.13081,"Correlations (e.g., Fisher's z, Pearson's r)",74,190,45,Specific group,aves,aves 100%; NA,No,Unclear,Yes
+id_049,hasik,2022,10.1098/rsbl.2022.0323,"Mean Standardised Difference (e.g., Cohen's d, Hedge's g), lnCVR",118,357,103,All taxa,NA,insecta 60.6%; mammalia 7.4%,No,Mixed,Yes
+id_050,hayward,2011,10.1371/journal.pone.0016557,raw measurements,222,777,711,All taxa,NA,mammalia 26.3%; actinopterygii 19.3%,Yes,Unclear,No
+id_051,hegyi,2015,10.1007/s00114-015-1311-6,"Correlations (e.g., Fisher's z, Pearson's r)",25,65,17,Specific group,aves,aves 100%; NA,No,Observational,Yes
+id_052,hernandez,2021,10.1098/rsbl.2021.0283,"Mean Standardised Difference (e.g., Cohen's d, Hedge's g), Correlations (e.g., Fisher's z, Pearson's r)",59,99,46,Specific group,aves,aves 100%; NA,No,Unclear,Yes
+id_053,hoekstra,2001,10.1073/pnas.161281098,standardized linear selection gradients (? beta),NA,394,NA,All taxa,NA,NA; NA,Unclear,Observational,No
+id_054,hsu,2015,10.1111/mec.13124,"Correlations (e.g., Fisher's z, Pearson's r)",78,216,44,Specific group,aves,aves 100%; NA,No,Unclear,Yes
+id_055,ihle,2013,10.1093/beheco/art074,Odds Ratio,6,9,1,Single species,aves,aves 100%; NA,No,Unclear,Yes
+id_056,isvaran,2013,10.1016/j.anbehav.2013.05.036,best model (different functions) and regressions (with random-effects model),10,NA,10,All taxa,NA,aves 40%; insecta 30%,No,Unclear,No
+id_057,janicke,2016,10.1126/sciadv.1500983,"Mean Standardised Difference (e.g., Cohen's d, Hedge's g), lnCVR",72,245,66,All taxa,NA,insecta 28.8%; aves 18.2%,Yes,Unclear,Yes
+id_058,janicke,2018,10.1111/ele.12907,"Mean Standardised Difference (e.g., Cohen's d, Hedge's g), Correlations (e.g., Fisher's z, Pearson's r), lnCVR; raw vlaues of Is",62,149,58,All taxa,NA,insecta 32.75%; aves|actinopterygii 13.8%,Yes,Mixed,No
+id_059,janicke,2018,10.1098/rspb.2018.0173,"Mean Standardised Difference (e.g., Cohen's d, Hedge's g), Correlations (e.g., Fisher's z, Pearson's r), lnCVR; raw opportunity for selection gradient",76,771,70,All taxa,NA,insecta 27.1; aves 17.1%,Yes,Unclear,No
+id_060,janicke,2019,10.1086/705825,"Correlations (e.g., Fisher's z, Pearson's r)",430,1447,309,All taxa,NA,aves 29.78%; insecta 18.45%,Yes,Unclear,Yes
+id_061,janicke,2021,10.1098/rsbl.2021.0251,"Mean Standardised Difference (e.g., Cohen's d, Hedge's g), lnCVR",65,360,58,All taxa,NA,aves 22.4%; insecta 22.4%,Yes,Unclear,Yes
+id_062,jennions,2001,10.1086/393743,"Correlations (e.g., Fisher's z, Pearson's r)",69,122,40,All taxa,NA,aves 55%; insecta+araneae 35%,No,Mixed,Yes
+id_063,jiang,2013,10.1086/670160,"Correlations (e.g., Fisher's z, Pearson's r)",269,116,252,All taxa,NA,aves 30.2%; insecta 19.4%,No,Unclear,Yes
+id_064,joly,2010,10.1007/s10709-009-9392-9,regression coefficients,10,NA,88,Specific group,insecta,insecta 100%; NA,No,Unclear,No
+id_065,jones,2019,10.3389/fevo.2019.00390,Odds Ratio,40,103,17,All taxa,NA,actinopterygii 58.8%; aves 17.6%,No,Experimental,Yes
+id_066,kamiya,2014,10.1111/mec.12934,"Correlations (e.g., Fisher's z, Pearson's r)",48,116,27,Specific group,vertebrata,mammalia 37%; aves 29.6%,No,Mixed,Yes
+id_067,kelly,2008,10.1007/s00265-007-0518-8,"Correlations (e.g., Fisher's z, Pearson's r)",69,866,77,All taxa,NA,insecta 48%; aves 22%,No,Mixed,Yes
+id_068,kelly,2011,10.1111/j.1469-185X.2011.00175.x,"Mean Standardised Difference (e.g., Cohen's d, Hedge's g)",91,246,89,All taxa,NA,insecta 59.6%; actinopterygii 10.1%,No,Unclear,No
+id_069,kim,2021,10.1111/1365-2656.13554,"Correlations (e.g., Fisher's z, Pearson's r)",36,348,3,Specific group,actinopterygii,actinopterygii 100%; NA,No,Experimental,Yes
+id_070,koch,2016,10.1086/684485,lnRR,8,19,5,Specific group,aves,aves 100%; NA,No,Experimental,Yes
+id_071,kraaijeveld,2011,10.1111/j.1469-185X.2010.00150.x,"Correlations (e.g., Fisher's z, Pearson's r)",22,64,NA,All taxa,NA,NA; NA,Unclear,Unclear,Yes
+id_072,lee,2022,10.1007/s00265-022-03194-6,"Correlations (e.g., Fisher's z, Pearson's r)",18,36,27,Specific group,amphibia and reptilia,squamata 44.4%; testudines 25.9%,No,Observational,Yes
+id_073,leung,1996,10.1080/11956860.1996.11682357,"Correlations (e.g., Fisher's z, Pearson's r)",59,151,58,All taxa,NA,aves 56.9%; insecta 31%,Yes,Unclear,Yes
+id_074,losdat,2014,10.1111/jeb.12403,inbreeding load (-B),30,NA,23,All taxa,NA,mammalia 52.2%; insecta 26.1%,No,Mixed,No
+id_075,lupold,2015,10.1111/jeb.12742,"Correlations (e.g., Fisher's z, Pearson's r)",NA,NA,157,All taxa,NA,mammalia 65.6%; insecta 19.1%,Yes,Unclear,No
+id_076,lupold,2015,10.1098/rspb.2015.2122,raw data,61,NA,100,Specific group,mammalia,mammalia 100%; NA,Yes,Unclear,No
+id_077,lupold,2020,10.1098/rstb.2020.0064,"Correlations (e.g., Fisher's z, Pearson's r)",120,285,NA,All taxa,NA,NA; NA,Unclear,Unclear,Yes
+id_078,macartney,2019,10.1111/brv.12524,"Mean Standardised Difference (e.g., Cohen's d, Hedge's g)",71,348,50,All taxa,NA,insecta 48%; mammalia 20%,No,Experimental,Yes
+id_079,macedo-rego_chapter1,2020,10.11606/T.41.2020.tde-30112020-101600,"Correlations (e.g., Fisher's z, Pearson's r), Is",NA,227,80,All taxa,NA,NA; NA,No,Unclear,Yes
+id_080,macedo-rego_chapter2,2020,10.11606/T.41.2020.tde-30112020-101600,"Correlations (e.g., Fisher's z, Pearson's r), I; Is; If, Jone's index",155,1243,130,All taxa,NA,NA; NA,No,Mixed,Yes
+id_081,macedo-rego_chapter3,2020,10.11606/T.41.2020.tde-30112020-101600,standardized selection differential,143,577,118,All taxa,NA,NA; NA,No,Unclear,Yes
+id_082,maciel,2023,10.1111/eth.13348,"Correlations (e.g., Fisher's z, Pearson's r)",65,183,64,Specific group,arthropoda,insecta 57.8%; malacostraca 32.8%,No,Observational,Yes
+id_083,majolo,2012,10.1002/ajpa.22031,"Correlations (e.g., Fisher's z, Pearson's r)",94,NA,25,Specific group,mammalia,mammalia 100%; NA,No,Unclear,Yes
+id_084,marmol,2022,NA,Unclear,8,19,NA,Specific group,actinopterygii,actinopterygii 100%; NA,No,Unclear,No
+id_085,mautz,2013,10.1111/brv.12022,"Correlations (e.g., Fisher's z, Pearson's r)",38,228,21,All taxa,NA,aves 38.1%; actinopterygii 38.1%,No,Observational,Yes
+id_086,mclean,2012,10.1111/j.1420-9101.2012.02533.x,"Correlations (e.g., Fisher's z, Pearson's r)",42,89,35,Specific group,amphibia,amphibia 100%; NA,No,Unclear,Yes
+id_087,menezes,2022,10.1111/ele.13964,Unclear,NA,NA,722,Specific group,aves,aves 100%; NA,No,Unclear,No
+id_088,meunier,2011,10.1007/s00265-010-1092-z,"Correlations (e.g., Fisher's z, Pearson's r)",47,NA,26,Specific group,aves,aves 100%; NA,No,Unclear,Yes
+id_089,moller,1998,10.1007/s002650050501,"Correlations (e.g., Fisher's z, Pearson's r)",NA,NA,33,Specific group,aves,aves 100%; NA,No,Unclear,Yes
+id_090,moller,1998,10.1086/286110,"Correlations (e.g., Fisher's z, Pearson's r)",65,146,41,All taxa,NA,insecta 51.2%; aves 26.8%,Yes,Mixed,Yes
+id_091,moller,1999,10.1086/392949,"Correlations (e.g., Fisher's z, Pearson's r)",50,69,39,All taxa,NA,aves 69.2%; actinopterygii 12.8%,No,Mixed,Yes
+id_092,moller,1999,10.1098/rspb.1999.0607,"Correlations (e.g., Fisher's z, Pearson's r)",22,22,22,All taxa,NA,aves 31.2%; insecta 31.2%,No,Mixed,Yes
+id_093,moller,2001,10.1007/s001140100255,"Correlations (e.g., Fisher's z, Pearson's r)",147,201,93,All taxa,NA,insecta 34.4%; actinopterygii 21.5%,No,Mixed,Yes
+id_094,moore,2016,10.1093/beheco/arv195,"Correlations (e.g., Fisher's z, Pearson's r)",38,118,25,All taxa,NA,aves 64%; amphibia 16%,Yes,Unclear,Yes
+id_095,mori,2013,10.1111/j.1570-7458.2012.01309.x,response ratio,24,59,25,Specific group,insecta,insecta 100%; NA,No,Experimental,Yes
+id_096,myers,2020,10.1080/23308249.2020.1739623,lnRR,18,38,12,Specific group,actinopterygii,actinopterygii 100%; NA,No,Experimental,Yes
+id_097,nakagawa,2007,10.1093/beheco/arm050,"Correlations (e.g., Fisher's z, Pearson's r)",NA,76,1,Single species,aves,aves 100%; NA,No,Unclear,No
+id_098,nieberding,2017,10.1007/s00265-017-2346-9,Unclear,31,80,1,Single species,insecta,insecta 100%; NA,No,Experimental,No
+id_099,nolazco,2022,10.1038/s41467-022-33548-7,"Correlations (e.g., Fisher's z, Pearson's r)",150,981,64,Specific group,aves,aves 100%; NA,No,Mixed,Yes
+id_100,ord,2009,10.1086/605372,"Correlations (e.g., Fisher's z, Pearson's r)",38,62,47,All taxa,NA,actinopterygii 36.2%; aves 34%,No,Mixed,Yes
+id_101,ord,2011,10.1111/j.1558-5646.2011.01319.x,"Correlations (e.g., Fisher's z, Pearson's r)",92,211,114,All taxa,NA,insecta 29.8%; aves 28.1%,No,Unclear,Yes
+id_102,ord,2021,10.1007/s00442-021-05068-6,"Correlations (e.g., Fisher's z, Pearson's r)",42,99,41,All taxa,NA,aves 29.3%; mammalia 26.8%,No,Mixed,Yes
+id_103,palaoro,2022,10.1111/brv.12877,"Mean Standardised Difference (e.g., Cohen's d, Hedge's g)",49,107,52,All taxa,NA,insecta 40.4%; squamata 25%,No,Mixed,Yes
+id_104,parker,2003,10.1080/08927014.2003.9522691,"Correlations (e.g., Fisher's z, Pearson's r)",8,26,1,Single species,aves,aves 100%; NA,No,Experimental,Yes
+id_105,parker,2006,10.1093/beheco/arl041,"Correlations (e.g., Fisher's z, Pearson's r)",5,42,1,Single species,aves,aves 100%; NA,No,Unclear,Yes
+id_106,parker,2013,10.1111/brv.12013,"Correlations (e.g., Fisher's z, Pearson's r)",48,NA,1,Single species,aves,aves 100%; NA,No,Mixed,Yes
+id_107,parker,2018,10.1016/j.anbehav.2018.05.023,"Correlations (e.g., Fisher's z, Pearson's r)",57,379,44,Specific group,aves,aves 100%; NA,No,Experimental,Yes
+id_108,parris,2013,10.1086/671906,raw data,10,11,8,Specific group,aves,aves 100%; NA,No,Unclear,No
+id_109,peixoto,2014,10.1016/j.beproc.2014.07.001,"Mean Standardised Difference (e.g., Cohen's d, Hedge's g), raw measures",37,39,30,Specific group,insecta,insecta 100%; NA,No,Observational,Yes
+id_110,pike,2021,10.1098/rspb.2021.1045,"Correlations (e.g., Fisher's z, Pearson's r)",40,43,41,All taxa,NA,mammalia 41.5%; aves 29.3%,No,Unclear,Yes
+id_111,pilakouta,2022,10.1111/1365-2656.13761,"Correlations (e.g., Fisher's z, Pearson's r)",53,116,47,All taxa,NA,insecta 72.3%; actinopterygii 6.3%,No,Experimental,Yes
+id_112,pollo,2022,10.1111/ele.13981,"Mean Standardised Difference (e.g., Cohen's d, Hedge's g)",60,724,52,All taxa,NA,insecta 30.8%; actinopterygii 25%,No,Experimental,Yes
+id_113,pomiankowski,1995,10.1098/rspb.1995.0054,raw data,NA,NA,30,All taxa,NA,NA; NA,No,Mixed,No
+id_114,powers,2020,10.1093/plankt/fbz075,Odds Ratio,24,252,23,Specific group,copepoda,copepoda 100%; NA,No,Experimental,Yes
+id_115,prokop,2012,10.1111/j.1558-5646.2012.01654.x,"Correlations (e.g., Fisher's z, Pearson's r)",90,315,55,All taxa,NA,aves 36.4%; aves 21.8%,No,Mixed,Yes
+id_116,prokuda,2014,10.1111/jeb.12483,"Correlations (e.g., Fisher's z, Pearson's r), heritability measure",106,424,57,All taxa,NA,insecta 66.67%; aves 17.54%,No,Unclear,No
+id_117,randler,2008,10.5253/078.096.0108,"Correlations (e.g., Fisher's z, Pearson's r)",58,NA,NA,Specific group,aves,aves 100%; NA,No,Mixed,Yes
+id_118,richardson,2022,10.1093/beheco/arac091,"Mean Standardised Difference (e.g., Cohen's d, Hedge's g)",287,1152,279,All taxa,NA,insecta 46.6%; actinopterygii 23.7%,No,Experimental,Yes
+id_119,rios-moura,2013,10.1016/j.anbehav.2013.07.002,Is,62,189,57,All taxa,NA,insecta 26.3%; amphibia 19.3%,No,Unclear,No
+id_120,rios-moura,2021,10.1111/ele.13690,"Correlations (e.g., Fisher's z, Pearson's r)",457,1828,341,All taxa,NA,aves 21.1%; insecta 20.8%,Yes,Mixed,Yes
+id_121,robinson,2019,10.1002/ece3.5418,"Correlations (e.g., Fisher's z, Pearson's r)",43,91,27,Specific group,aves,aves 100%; NA,No,Observational,Yes
+id_122,rodriguez,2019,10.1093/icb/icz039,allometric slopes,NA,NA,20,All taxa,NA,NA; NA,No,Unclear,No
+id_123,romano,2017,10.1111/brv.12297,"Correlations (e.g., Fisher's z, Pearson's r)",76,329,1,Single species,aves,aves 100%; NA,No,Mixed,Yes
+id_124,romano,2017,10.1111/jeb.13151,"Mean Standardised Difference (e.g., Cohen's d, Hedge's g)",20,46,1,Single species,aves,aves 100%; NA,No,Unclear,Yes
+id_125,rometsch,2020,10.1098/rstb.2019.0535,Odds Ratio,39,NA,13,Specific group,actinopterygii,actinopterygii 100%; NA,No,Mixed,Yes
+id_126,sanchez-tojar,2018,10.7554/eLife.37385,"Correlations (e.g., Fisher's z, Pearson's r)",19,87,1,Single species,aves,aves 100%; NA,No,Mixed,Yes
+id_127,santos,2011,10.1016/j.anbehav.2011.03.022,"Correlations (e.g., Fisher's z, Pearson's r)",47,127,23,Specific group,aves,aves 100%; NA,No,Mixed,Yes
+id_128,seguin,2012,10.1371/journal.pone.0037785,"Mean Standardised Difference (e.g., Cohen's d, Hedge's g)",31,NA,1,Single species,aves,aves 100%; NA,No,Unclear,Yes
+id_129,senior,2016,10.1111/faf.12096,"Mean Standardised Difference (e.g., Cohen's d, Hedge's g)",15,85,9,Specific group,actinopterygii,actinopterygii 100%; NA,No,Experimental,Yes
+id_130,simmons,2005,10.1146/annurev.ecolsys.36.102403.112501,"Correlations (e.g., Fisher's z, Pearson's r)",12,29,12,Specific group,arthropoda,insecta 91.7%; arachnida 8.3%,No,Experimental,No
+id_131,simons,2011,10.1093/beheco/arr043,"Correlations (e.g., Fisher's z, Pearson's r)",16,16,1,Single species,aves,aves 100%; NA,No,Unclear,Yes
+id_132,simons,2012,10.1371/journal.pone.0043088,"Correlations (e.g., Fisher's z, Pearson's r)",148,357,88,Specific group,aves,aves 100%; NA,No,Mixed,Yes
+id_133,slatyer,2012,10.1111/j.1469-185X.2011.00182.x,"Mean Standardised Difference (e.g., Cohen's d, Hedge's g)",46,232,40,All taxa,NA,insecta 72.5%; mammalia 10%,No,Experimental,Yes
+id_134,sokolovska,2000,10.1046/j.1365-2311.2000.00251.x,"Correlations (e.g., Fisher's z, Pearson's r)",20,29,12,Specific group,insecta,insecta 100%; NA,No,Unclear,Yes
+id_135,soma,2011,10.1093/beheco/arq219,"Correlations (e.g., Fisher's z, Pearson's r)",44,75,27,Specific group,aves,aves 100%; NA,No,Observational,Yes
+id_136,soper,2021,10.1186/s12862-021-01925-3,"Mean Standardised Difference (e.g., Cohen's d, Hedge's g)",18,42,9,All taxa,NA,insecta 88.9%; mammalia 11.1%,No,Mixed,Yes
+id_137,south,2011,10.1111/j.1469-185X.2010.00145.x,"Mean Standardised Difference (e.g., Cohen's d, Hedge's g)",84,191,57,Specific group,arthropoda,insecta 94.7%; arachnida 5.3%,No,Experimental,Yes
+id_138,street,2016,10.1016/j.anbehav.2015.11.023,"Correlations (e.g., Fisher's z, Pearson's r)",7,17,6,Specific group,mammalia,mammalia 100%; NA,No,Unclear,Yes
+id_139,thornhill,1998,10.1093/beheco/9.6.546,"Correlations (e.g., Fisher's z, Pearson's r)",33,146,29,All taxa,NA,insecta 51.7%; aves 34.5%,Yes,Unclear,Yes
+id_140,torres-vila,2004,10.1007/s00265-003-0712-2,"Mean Standardised Difference (e.g., Cohen's d, Hedge's g)",39,39,25,Specific group,insecta,insecta 100%; NA,No,Mixed,Yes
+id_141,torres-vila,2005,10.1007/s00265-004-0857-7,"Mean Standardised Difference (e.g., Cohen's d, Hedge's g)",29,29,25,Specific group,insecta,insecta 100%; NA,No,Unclear,Yes
+id_142,vieira,2013,10.1111/1365-2435.12051,"Mean Standardised Difference (e.g., Cohen's d, Hedge's g)",42,121,39,Specific group,arthropoda,NA,No,Mixed,Yes
+id_143,voje,2016,10.1086/684159,regression slopes,119,3269,509,All taxa,NA,insecta 57%; aves 18.3%,Yes,Unclear,No
+id_144,wang,2019,10.1371/journal.pbio.3000156,"Correlations (e.g., Fisher's z, Pearson's r)",165,494,127,Specific group,aves,aves 100%; NA,No,Mixed,No
+id_145,weaver,2018,10.1038/s41467-017-02649-z,"Correlations (e.g., Fisher's z, Pearson's r)",50,191,19,Specific group,aves,aves 100%; NA,No,Unclear,Yes
+id_146,weir,2011,10.1086/657918,"Correlations (e.g., Fisher's z, Pearson's r)",54,76,50,All taxa,NA,actinopterygii 34%; insecta 32%,No,Mixed,No
+id_147,white,2020,10.1098/rsbl.2020.0001,"Correlations (e.g., Fisher's z, Pearson's r)",41,186,28,All taxa,NA,aves 75%; insecta 10.7%,No,Mixed,Yes
+id_148,white,2022,10.1098/rspb.2022.0444,"Mean Standardised Difference (e.g., Cohen's d, Hedge's g), log-odds (logit-transformed proportion)",76,187,78,All taxa,NA,insecta 41%; amphibia 20.5%,No,Experimental,Yes
+id_149,winternitz,2017,10.1111/mec.13920,"Correlations (e.g., Fisher's z, Pearson's r)",30,58,7,Specific group,mammalia,mammalia 100%; NA,Yes,Mixed,Yes
+id_150,yasukawa,2010,10.1111/j.1557-9263.2009.00258.x,"Correlations (e.g., Fisher's z, Pearson's r)",11,37,1,Single species,aves,aves 100%; NA,No,Mixed,Yes
+id_151,yukilevich,2012,10.1111/j.1558-5646.2011.01534.x,premating isolation index; postzygotic isolation index,NA,254,NA,Specific group,insecta,insecta 100%; NA,No,Experimental,No
+id_152,zhang,2016,10.13292/j.1000-4890.201602.011,"Mean Standardised Difference (e.g., Cohen's d, Hedge's g)",29,NA,27,Specific group,insecta,insecta 100%; NA,No,Experimental,Yes
