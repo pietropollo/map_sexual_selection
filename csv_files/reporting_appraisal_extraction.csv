@@ -17,6 +17,6 @@ post_hoc,Mentions whether any hypotheses were formulated after data analysis,Yes
 main_data,Data necessary to reproduce results is provided,Adequate / Substandard / Insufficient / Not applicable
 additional_data,"Additional data relevant for effect size extraction are provided (e.g. raw data used to calculate effect sizes, descriptions of where data were located in papers)",Adequate / Insufficient / Not applicable
 metadata,Metadata (descriptions of all variables collected) are provided,Adequate / Substandard / Insufficient / Not applicable
-scripts,Analysis scripts or full model specification are provided,Adequate / Insufficient / Not applicable
+scripts,Analysis scripts or full model specification are provided,Adequate / Insufficient
 heterogeneity,Which indicators of heterogeneity are reported,None / i_2 / tau_2 / Q / Other
 publication_bias_investigated,Which approaches used to detect and/or correct publication bias are presented,None / Funnel plots / Correlation-based methods / Regression-based methods / Fail-safe N / Trim-and-fill tests / Time-lag bias tests / Other

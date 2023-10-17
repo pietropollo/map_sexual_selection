@@ -1,0 +1,1583 @@
+---
+title: "Systematic map of meta-analyses related to sexual selection"
+author: "Pietro Pollo"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    code_folding: hide
+    theme: united
+    highlight: tango
+    toc: true
+    toc_float:
+      collapsed: true
+      smooth_scroll: false
+---
+```{r Load packages, message=FALSE, warning=FALSE, include=TRUE}
+if (!require("pacman")) {install.packages("pacman")}
+pacman::p_load(circlize,
+               cowplot,
+               DT,
+               ggraph,
+               ggpattern,
+               igraph,
+               janitor,
+               kableExtra,
+               lubridate,
+               patchwork,
+               tidygraph,
+               tidyverse)
+
+options(DT.options = list(dom = "Blfrtip",
+                          scrollX = TRUE,
+                          pageLength = 5,
+                          columnDefs = list(list(targets = '_all', 
+                                                 className = 'dt-center')),
+                          buttons = c('copy', 'csv', 'excel', 'pdf')))
+```
+
+```{r Load data used multiple times, message=FALSE, warning=FALSE, include=TRUE}
+systematic_map_results <- read_csv("csv_files/systematic_map_results.csv")
+
+questions_list <- read_csv("csv_files/questions_list.csv")
+
+questions_modality <- read_csv("csv_files/questions_modality.csv") 
+
+reporting_appraisal_results <- 
+  read_csv("csv_files/reporting_appraisal_results.csv")
+
+affiliations <- read_csv("csv_files/bibliometrics_affiliations.csv", 
+                         locale = locale(encoding = "latin1")) 
+
+gender <- read_csv("csv_files/bibliometrics_gender.csv", 
+                   locale = locale(encoding = "latin1")) 
+
+```
+
+# Methods
+
+## ROSES guidelines
+
+### Table S1  
+
+ROSES form.  
+
+```{r message=FALSE, warning=FALSE, include=TRUE}
+read_csv("csv_files/roses_checklist.csv", 
+         locale = locale(encoding = "latin1")) %>%
+  datatable(.,
+            extensions = "Buttons")
+```
+
+## Literature searches
+Strings used for literature searches depending on the database, as follows:
+
+__Scopus:__ TITLE-ABS-KEY((“metaanal\*” OR “meta-anal\*” OR “metaregres\*” OR “meta-regres\*” OR (quantitative\* w/3 review\* ) OR (quantitative\* w/3 synthe\*) OR (global\* w/3 synthe\*) OR “comprehensive evidence”) AND (“sexual\* select\*” OR “\*male choice” OR “mate cho\*” OR “mat\* prefer\*” OR “\*male prefer\*” OR “intrasexual competition” OR “intra-sexual competition” OR “intersexual competition” OR “inter-sexual competition” OR “sperm competition” OR “mating pattern\*” OR “assortative mating” OR “mating success” OR “polyandr\*” OR “polygy\*” OR “extra-pair” OR extrapair OR “mate guarding” OR “reproductive tactic\*” OR remating OR “honest signal\*” OR “sexual signal\*” OR “ornament\*” OR “sperm transfer” OR “good genes” OR “good-genes” OR “ejaculate trait\*” OR “ejaculate production” OR “bird song\*” OR “mating strateg\*” OR “bateman gradient\*”))
+
+__Web of Science:__ TOPIC((“metaanal\*” OR “meta-anal\*” OR “metaregres\*” OR “meta-regres\*” OR (quantitativ\* NEAR/3 review\* ) OR (quantitative\* NEAR/3 synthe\*) OR (global\* NEAR/3 synthe\*) OR “comprehensive evidence”) AND (“sexual\* select\*” OR “\*male choice” OR “mate cho\*” OR “mat\* prefer\*” OR “\*male prefer\*” OR “intrasexual competition” OR “intra-sexual competition” OR “intersexual competition” OR “inter-sexual competition” OR “sperm competition” OR “mating pattern\*” OR “assortative mating” OR “mating success” OR “polyandr\*” OR “polygy\*” OR “extra-pair” OR extrapair OR “mate guarding” OR “reproductive tactic\*” OR remating OR “honest signal\*” OR “sexual signal\*” OR “ornament\*” OR “sperm transfer” OR “good genes” OR “good-genes” OR “ejaculate trait\*” OR “ejaculate production” OR “bird song\*” OR “mating strateg\*” OR “bateman gradient\*”))
+
+__Google Scholar:__  
+Simplified Chinese: ((“荟萃分析” OR “元分析”) AND (“性选择” OR “性别选择”))  
+Traditional Chinese: ((“薈萃分析” OR “元分析”) AND (“性選擇” OR “性别選擇”))  
+Croatian: (“meta-analiza” AND (“spolni odabir” OR “seksualna selekcija” OR “spolna selekcija”))  
+Japanese: ((“メタ分析” OR “メタ解析”) AND “性選択”)  
+Polish: (“metaanaliza” AND “dobór płciowy”)  
+Portuguese: (“meta-análise” AND “seleção sexual”)  
+Russian: (“мета-анализ” AND “половой отбор”)  
+Spanish: (“meta-análisis” AND “selección sexual”)  
+
+## Screening
+
+A few studies employed meta-analytical methods but the data they used to make inferences were not from empirical papers (e.g. Friis et al. 2021 used citizen data, Winternitz et al. 2013 used genbank entries, Holman 2016 used simulated data, and Dobson et al. 2018 used estimated data). We therefore deemed these studies invalid according to our criteria for broad meta-analyses and excluded them from our systematic map during full-text screening. Furthermore, we did not consider plasma concentration of carotenoids as a sexual trait, despite evidence of it being connected to the expression of ornaments. As a consequence we excluded Simons et al. (2015) from our systematic map as this study exclusively investigated plasma concentration carotenoids. In contrast, we included both Simons et al. (2012) and Koch et al. (2016) as they explored individual traits that could be considered ornaments (e.g. plumage) in addition to plasma concentration of carotenoids.
+
+
+### Table S2
+
+Decisions made at the full-text screening stage, with reasons for exclusion.  
+
+```{r message=FALSE, warning=FALSE, include=TRUE}
+read_csv("csv_files/full_text_screeening_results.csv") %>% 
+  datatable(.,
+            extensions = "Buttons")
+```
+
+## Data extraction
+
+### Systematic map
+
+We tried to summarise questions from meta-analytical studies by clumping similar subquestions into a single one, as described for Garamszegi (2005) in section III.6.c. However, if a summarised or original question fitted more than two topics within our classification framework, we would split it into multiple questions as long as authors provided results for each one of them. For instance, Alissa (2020) presented multiple questions with each belonging to a different topic related to sexual selection. Thus, in that case (and others alike) we listed questions separately as the study showed findings that specifically answered them. This system worked well for all but four studies (McLean et al. 2012; Parker 2013; Thornhill & Moller 1998; Yasukawa 2010), which had questions that fitted three different topics (pre-copulatory sexual traits, mate choice, and mating success) but could not be split. This is because they mixed mate choice outcomes with observations of mating success (as others described in section III.5.d), without any form of distinction (e.g. moderator) in their results. Thus, we chose to remove the relevant questions from these four cases from the mate choice category, leaving them to pre-copulatory sexual traits and mating success only. Additionally, we had trouble to classify the study from Garcia-Roa et al. (2020) as it used several different measures to calculate effect sizes. Because many of its effect sizes were related to sperm number and genital traits, we put this study within the topic of post-copulatory intrasexual competition.
+We also note that some meta-analyses might actually connect different topics but our classification system might have not considered it as such if these links are not central to the study. For instance, studies that evaluate whether mating is assortative consider many traits, including ornaments (e.g. Jiang et al. 2013; Rios Moura 2021; Wang 2019). Yet, because ornaments were not the main focus of these questions, we did not attribute the topic “pre-copulatory sexual traits” to these studies.  
+
+
+### Table S3
+
+Variables extracted from meta-analyses related to sexual selection, regarding their content.  
+
+```{r message=FALSE, warning=FALSE, include=TRUE}
+read_csv("csv_files/systematic_map_extraction.csv") %>% 
+  datatable(.,
+            extensions = "Buttons")
+```
+
+### Reporting appraisal
+
+We initially planned to assess whether meta-analyses provided selection criteria (see Pollo et al. 2023), but we found that this was highly subjective, so we excluded this variable from our data extraction.  
+
+
+### Table S4
+
+Variables extracted from meta-analyses related to sexual selection, regarding their methods.  
+
+```{r message=FALSE, warning=FALSE, include=TRUE}
+read_csv("csv_files/reporting_appraisal_extraction.csv") %>% 
+  datatable(.,
+            extensions = "Buttons")
+```
+
+# Results
+
+## Systematic map
+
+### Table S5  
+
+Systematic map results (Table S3 serves as metadata).  
+
+```{r message=FALSE, warning=FALSE, include=TRUE}
+systematic_map_results %>% 
+  datatable(.,
+            extensions = "Buttons")
+```
+
+### Table S6: question list
+
+Questions extracted from meta-analyses related to sexual selection. Variables after DOI (except the last one) are the categories we used to classify questions, in which 1 represents that a given question fitted in the category and 0 that it did not. `sex_roles_classification` refers to the classification regarding its conformity with sex roles depending on the sex focused by the question (see details in Section II.3.a).  
+
+```{r message=FALSE, warning=FALSE, include=TRUE}
+questions_list %>% 
+  datatable(.,
+            extensions = "Buttons")
+```
+
+### Table S7: questions' trait modality
+
+Trait modality for meta-analytical questions that fitted the pre-copulatory sexual trait category.  
+
+```{r message=FALSE, warning=FALSE, include=TRUE}
+questions_modality %>% 
+  datatable(.,
+            extensions = "Buttons")
+```
+
+## Reporting appraisal
+
+### Table S8
+
+Reporting appraisal results (Table S4 serves as metadata).  
+
+```{r message=FALSE, warning=FALSE, include=TRUE}
+reporting_appraisal_results %>% 
+  datatable(.,
+            extensions = "Buttons")
+```
+
+## Bibliometrics
+
+### Table S9: affiliations
+
+Institutional affiliations listed in meta-analyses related to sexual selection.  
+
+```{r message=FALSE, warning=FALSE, include=TRUE}
+affiliations %>%
+  datatable(.,
+            extensions = "Buttons")
+```
+
+### Table S10: author gender
+
+Gender of authors of meta-analyses related to sexual selection. This dataset contains, on each row, the name of an author from a meta-analytical study. `author_order` represents the order in which the name appeared in the authorship list of that study and `total_number_authors` represents the total number of authors of that study. `automated_gender` shows the gender assigned to `first_name` using the package `genderizeR`, with its certainty as the variable `automated_certainty`. `manual_gender` is the revised gender assignment, including manual insertions when certainty from automated process was lower than 0.95.
+```{r message=FALSE, warning=FALSE, include=TRUE}
+gender %>%
+  datatable(.,
+            extensions = "Buttons")
+```
+
+# Main figures reproduced
+
+Our results are purely descriptive and are shown through the figures in the manuscript, which are reproduced here.
+
+## Figure 3
+
+```{r message=FALSE, warning=FALSE, include=TRUE}
+systematic_map_results %>%
+  ggplot(aes(x = publication_year)) +
+  geom_histogram(col = "white",
+                 fill = "darkgrey",
+                 binwidth = 1) +
+  labs(x = "Publication year",
+       y = "Number of meta-analytical studies") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(limits = c(0, 14),
+                     expand = c(0, 0)) +
+  theme_classic() +
+  theme(axis.title.x = element_text(margin = margin(t = 0.3, unit = "cm"),
+                                    size = 12),
+        axis.title.y = element_text(margin = margin(r = 0.3, unit = "cm"),
+                                    size = 12),
+        axis.text = element_text(size = 10))
+```
+
+## Figure 4
+
+```{r message=FALSE, warning=FALSE, include=TRUE}
+# colours ----
+taxonomic_scope_colours <- rev(c("#55CDFD",
+                                 "#F7A8B8",
+                                 "darkgrey"))  
+
+# doughnut plot ----
+systematic_map_results %>% 
+  mutate(taxonomic_scope = factor(taxonomic_scope,
+                                  levels = c("All taxa",
+                                             "Specific group",
+                                             "Single species"))) %>% 
+  count(taxonomic_scope) %>%
+  mutate(set = 2,
+         percentage = round(n/sum(n), 4) * 100,
+         lab_pos = rev(cumsum(rev(percentage)) - 0.5 * rev(percentage))) %>% 
+  mutate(taxonomic_scope = factor(taxonomic_scope,
+                                  levels = c("None",
+                                             "All taxa",
+                                             "Specific group",
+                                             "Single species"))) %>% 
+  ggplot(aes(x = set,
+             y = percentage,
+             fill = taxonomic_scope)) +
+  geom_bar(stat = "identity", 
+           width = c(rep(0.8, 3)),
+           color = "white") +
+  coord_polar(theta = "y",
+              start = 0.3 * pi / 2) +
+  geom_point(aes(y = lab_pos,
+                 x = set),
+             pch = 16,
+             size = c(15, 15, 15),
+             col = "white") +
+  geom_text(aes(y = lab_pos,
+                x = set,
+                label = paste0(n)),
+            col = c(taxonomic_scope_colours), 
+            size = 7) +
+  lims(x = c(0.5, 2.4)) +
+  scale_fill_manual(values = c(taxonomic_scope_colours)) +
+  theme_void() +
+  theme(legend.position = "",
+        plot.margin = unit(c(0, 0, 0, 0), "cm"))
+
+```
+
+```{r message=FALSE, warning=FALSE, include=TRUE}
+# barplot single species ----
+systematic_map_results %>% 
+  filter(taxonomic_scope == "Single species") %>% 
+  count(taxonomic_focus) %>% 
+  mutate(prop = n / sum(n),
+         taxonomic_focus = c("Birds",
+                             "Insects")) %>% 
+  arrange(desc(n)) %>% 
+  add_row(taxonomic_focus = c("x", "y"),
+          n = c(0, 0),
+          prop = c(0, 0)) %>% 
+  ggplot(aes(x = n,
+             y = fct_reorder(taxonomic_focus, n))) +
+  geom_bar(stat = "identity",
+           fill = taxonomic_scope_colours[3]) +
+  theme_classic() +
+  scale_x_reverse(position = "top",
+                  breaks = c(0, 10),
+                  expand = c(0, 0.2)) +
+  scale_y_discrete(position = "right",
+                   expand = c(0, 0.5),
+                   breaks =  rev(c("Birds", "Insects")),
+                   labels = rev(c("Bird", "Insect"))) +
+  labs(y = "Synthesised animal",
+       x = "Count") +
+  theme(plot.margin = unit(c(0.2, 0.2, 0.6, 0.6), "cm"),
+        axis.title.x.top = element_text(margin = margin(b = 0.3, unit = "cm")),
+        axis.title.y.right = element_text(margin = margin(l = 0.3, unit = "cm")))
+
+```
+
+```{r message=FALSE, warning=FALSE, include=TRUE}
+# barplot multiple species same taxon ----
+
+systematic_map_results %>% 
+  filter(taxonomic_scope == "Specific group") %>% 
+  count(taxonomic_focus) %>%
+  mutate(prop = n / sum(n)) %>% 
+  arrange(desc(n)) %>% 
+  mutate(taxonomic_focus_adj = c("Birds",
+                                 "Insects",
+                                 "Fish",
+                                 rep("Others", 7))) %>% 
+  group_by(taxonomic_focus_adj) %>% 
+  summarize(n = sum(n),
+            prop = sum(prop)) %>% 
+  ggplot(aes(x = n,
+             y = fct_reorder(taxonomic_focus_adj, desc(n)))) +
+  geom_bar(stat = "identity",
+           fill = taxonomic_scope_colours[2]) +
+  theme_classic() +
+  scale_x_reverse(expand = c(0, 0.4)) +
+  scale_y_discrete(position = "right",
+                   expand = c(0, 0.5)) +
+  labs(y = "Synthesised animal group",
+       x = "Count") +
+  theme(plot.margin = unit(c(0.6, 0.2, 0.2, 0.6), "cm"),
+        axis.title.x = element_text(margin = margin(t = 0.3, unit = "cm")),
+        axis.title.y.right = element_text(margin = margin(l = 0.3, unit = "cm")))
+
+```
+
+```{r message=FALSE, warning=FALSE, include=TRUE}
+# multiple taxa ----
+
+multiple_taxa_preprocess <- 
+  systematic_map_results %>% 
+  separate(taxonomic_proportions_total,
+           into = c("group1", "group2"),
+           sep = ";") %>% 
+  pivot_longer(cols = starts_with("group"),
+               names_to = "popularity_order",
+               names_prefix = "group",
+               values_to = "taxon") %>% 
+  mutate(taxon = str_trim(str_remove_all(taxon,
+                                         "%"))) %>% 
+  separate(taxon,
+           sep = " ",
+           into = c("taxon", "prop_percentage")) %>% 
+  mutate(across(c(popularity_order, 
+                  prop_percentage),
+                ~ as.numeric(.)),
+         taxon = ifelse(taxon == "NA",
+                        NA,
+                        taxon)) %>% 
+  filter(taxonomic_scope == "All taxa")
+
+## most popular ----
+multiple_taxa_preprocess %>% 
+  count(popularity_order, taxon) %>% 
+  filter(popularity_order == 1) %>% 
+  arrange(desc(n)) %>% 
+  mutate(proportion = n / sum(n),
+         taxon_adj = c("Insects",
+                       "Birds",
+                       "Unclear",
+                       rep("Others", 3))) %>% 
+  mutate(plot_pattern = factor(ifelse(taxon_adj == "Unclear", 
+                                      1, 
+                                      0))) %>%
+  mutate(taxon_adj = factor(taxon_adj,
+                            levels = rev(c("Insects",
+                                           "Birds",
+                                           "Others",
+                                           "Unclear")))) %>% 
+  ggplot(aes(x = n,
+             y = taxon_adj,
+             pattern = plot_pattern)) +
+  geom_col_pattern(fill = taxonomic_scope_colours[1],
+                   pattern_fill = "white",
+                   pattern_color = "white",
+                   pattern_spacing = 0.03,
+                   pattern_density = 0.15,
+                   pattern_angle = 45) +
+  scale_pattern_manual(values = c("none", "circle")) +
+  labs(y = "Most popular animal\ngroups within studies' dataset",
+       x = "Count") +
+  theme_classic() +
+  theme(plot.margin = unit(c(0.2, 0.6, 0.6, 0.2), "cm"),
+        axis.title.x.top = element_text(margin = margin(b = 0.3, unit = "cm")),
+        axis.title.y = element_text(margin = margin(r = 0.3, unit = "cm")),
+        legend.position = "none")
+
+```
+
+```{r message=FALSE, warning=FALSE, include=TRUE}
+## second most popular ----
+multiple_taxa_preprocess %>% 
+  count(popularity_order, taxon) %>%
+  filter(popularity_order == 2) %>% 
+  mutate(n = c(18, 1, 6, 15, 0, 12, 1, 1, 7, 1, 9)) %>% #manually duplicating birds and fish as they appear twice with each other or another taxonomic group
+  filter(n > 0) %>% 
+  arrange(desc(n)) %>% 
+  mutate(prop = n / sum(n),
+         prop_taxon_adj = c("Fish",
+                            "Birds",
+                            "Others",
+                            "Unclear",
+                            rep("Others", 6))) %>% 
+  group_by(prop_taxon_adj) %>% 
+  summarize(n = sum(n),
+            prop = sum(prop)) %>% 
+  mutate(plot_pattern = factor(ifelse(prop_taxon_adj == "Unclear", 1, 0))) %>% 
+  ggplot(aes(x = n,
+             y = fct_reorder(prop_taxon_adj, desc(n)),
+             pattern = plot_pattern)) +
+  geom_col_pattern(fill = taxonomic_scope_colours[1],
+                   pattern_fill = "white",
+                   pattern_color = "white",
+                   pattern_spacing = 0.03,
+                   pattern_density = 0.15,
+                   pattern_angle = 45) +
+  scale_pattern_manual(values = c("none", "circle")) +
+  labs(y = "Second most popular animal\ngroups within studies' dataset",
+       x = "Count"
+  ) +
+  scale_x_continuous(breaks = seq(0, 20, 10),
+                     expand = c(0, 0.4)) +
+  scale_y_discrete(expand = c(0, 0.5)) +
+  theme_classic() +
+  theme(plot.margin = unit(c(0.6, 0.6, 0.2, 0.2), "cm"),
+        axis.title.x = element_text(margin = margin(t = 0.3, unit = "cm")),
+        axis.title.y = element_text(margin = margin(r = 0.3, unit = "cm")),
+        legend.position = "none")
+```
+
+## Figure 5
+
+```{r message=FALSE, warning=FALSE, include=TRUE}
+multiple_taxa_preprocess %>% 
+  filter(!is.na(taxon)) %>%
+  group_by(study_id) %>% 
+  mutate(prop_sum = sum(prop_percentage)) %>% 
+  distinct(study_id, .keep_all = T) %>% 
+  ggplot(aes(x = number_species,
+             y = prop_sum)) +
+  geom_point(shape = 1, size = 2) +
+  geom_smooth(method = "lm",
+              col = "black") +
+  labs(x = "Number of species used within each meta-analytical study (log10 scale)",
+       y = "Percentage of species represented by the two most\npopular animal groups within each meta-analytical study") +
+  scale_x_continuous(trans = "log10") +
+  theme_classic() +
+  theme(legend.position = "top",
+        legend.title = element_text(size = 12),
+        legend.text = element_text(size = 10),
+        axis.title.y = element_text(margin = margin(r = 0.3, unit = "cm"),
+                                    size = 12),
+        axis.title.x = element_text(margin = margin(t = 0.3, unit = "cm"),
+                                    size = 12),
+        axis.text = element_text(size = 10))
+```
+
+## Figure 6
+
+```{r message=FALSE, warning=FALSE, include=TRUE}
+systematic_map_results %>% 
+  mutate(taxonomic_scope = factor(taxonomic_scope,
+                                  levels = rev(c("All taxa",
+                                                 "Specific group",
+                                                 "Single species")))) %>% 
+  pivot_longer(cols = c(number_studies,
+                        number_effect_sizes,
+                        number_species),
+               names_to = "number_type",
+               names_prefix = "number_") %>% 
+  ggplot(aes(x = number_type,
+             y = value,
+             fill = taxonomic_scope)) +
+  geom_violin() +
+  geom_jitter(position = position_jitterdodge(dodge.width = 0.9,
+                                              jitter.width = 0.1,
+                                              jitter.height = 0),
+              alpha = 0.5) +
+  labs(x = "Type of number",
+       y = "Number from meta-analytical studies (log10 scale)",
+       fill = "Taxonomic scope") +
+  scale_fill_manual(values = rev(taxonomic_scope_colours)) +
+  scale_x_discrete(limits = c("species",
+                              "studies",
+                              "effect_sizes"),
+                   labels = c("Species",
+                              "Empirical studies",
+                              "Effect sizes")) +
+  scale_y_continuous(trans = "log10") +
+  theme_classic() +
+  theme(legend.position = "top",
+        legend.title = element_text(size = 12),
+        legend.text = element_text(size = 10),
+        axis.title.y = element_text(margin = margin(r = 0.3, unit = "cm"),
+                                    size = 12),
+        axis.title.x = element_blank(),
+        axis.text = element_text(size = 10))
+```
+
+## Figure 7
+
+```{r message=FALSE, warning=FALSE, include=TRUE}
+questions_list_mod <- 
+  questions_list %>% 
+  dplyr::select(pre_copulatory_sexual_traits:sexual_conflict_and_sexual_selection_estimates)
+
+# colours ----
+topic_colours <- c("#E43131", 
+                   "#DC5E25",
+                   "#D38B19",
+                   "#CBB70C", 
+                   "#C2E400", 
+                   "#4DC46F", 
+                   "#479795", 
+                   "#406ABC", 
+                   "#3A3DE2")
+
+colour_matrix <- matrix(rep(topic_colours, each = 9), 9)
+diag(colour_matrix) <- "transparent"
+
+# create matrix of co-occurrence ----
+
+m_q <- matrix(nrow = ncol(questions_list_mod),
+              ncol = ncol(questions_list_mod))
+
+
+for (k in 1:ncol(questions_list_mod)) {
+  position_occurrence <- which(questions_list_mod[, k] == 1)
+  
+  for (j in 1:ncol(questions_list_mod)) {
+    m_q[k, j] <- sum(questions_list_mod[position_occurrence, j])
+    
+  }
+}
+
+m_q_mod <- m_q
+m_q_copy <- m_q
+diag(m_q_copy) <- 0
+
+diag(m_q_mod) <- diag(m_q) - colSums(m_q_copy)
+
+
+proper_names <- c("Pre-copulatory sexual traits", 
+                  "Pre-cop. intrasex. comp.",
+                  "Post-cop. intrasex. comp.",
+                  "Mate choice",
+                  "Remating",
+                  "Mating success",
+                  "Mating patterns",
+                  "EPCs/EPP",
+                  "Estimates")
+
+colnames(m_q_mod) <- proper_names
+rownames(m_q_mod) <- proper_names
+
+circos.clear()
+circos.par(start.degree = 90)
+par(family = "A")
+
+# chord plot
+chordDiagram(m_q_mod, 
+             symmetric = T, 
+             keep.diagonal = T, 
+             grid.col = topic_colours,
+             col = colour_matrix,
+             self.link = 1,
+             annotationTrack = c("grid"), 
+             annotationTrackHeight = mm_h(7))
+
+# make legends
+for(si in get.all.sector.index()) {
+  circos.axis(h = 'top',
+              major.at = seq(0, 80, 5),
+              labels = seq(0, 80, 5),
+              minor.ticks = 4,
+              labels.cex = fontsize(8),
+              sector.index = si,
+              track.index = 1,
+              labels.niceFacing = TRUE,
+              labels.pos.adjust = c(0,0))
+  xlim = get.cell.meta.data("xlim", sector.index = si, track.index = 1)
+  ylim = get.cell.meta.data("ylim", sector.index = si, track.index = 1)
+  circos.text(mean(xlim), 
+              mean(ylim), 
+              si, 
+              sector.index = si, 
+              track.index = 1, 
+              facing = "bending.inside", 
+              niceFacing = TRUE, 
+              col = "white",
+              cex = 0.85)
+}
+```
+
+## Figure 8
+
+```{r message=FALSE, warning=FALSE, include=TRUE}
+questions_list %>% 
+  mutate(sex_roles_classification = factor(ifelse(sex_roles_classification == "hermaphro",
+                                                  "Hermaphrodite",
+                                                  str_to_sentence(sex_roles_classification)),
+                                           levels = c("Hermaphrodite",
+                                                      "Non-conformist",
+                                                      "Neutral",
+                                                      "Conformist",
+                                                      "Unclear"))) %>% 
+  pivot_longer(cols = c(pre_copulatory_sexual_traits:sexual_conflict_and_sexual_selection_estimates),
+               names_to = "category") %>% 
+  filter(value == 1) %>% 
+  mutate(category = factor(category,
+                           levels = rev(c("pre_copulatory_sexual_traits",
+                                          "pre_copulatory_intrasexual_competition",
+                                          "post_copulatory_intrasexual_competition",
+                                          "mate_choice",
+                                          "remating_and_eagerness_to_mate",
+                                          "mating_success",
+                                          "mating_patterns",
+                                          "divorce_and_epp",
+                                          "sexual_conflict_and_sexual_selection_estimates")))) %>% 
+  count(sex_roles_classification, category) %>%
+  group_by(category) %>% 
+  mutate(prop = n/sum(n)) %>% 
+  arrange(category) %>% 
+  ggplot(aes(x = prop * 100,
+             y = category,
+             fill = category,
+             pattern = sex_roles_classification,
+             pattern_angle = sex_roles_classification,
+             pattern_density = sex_roles_classification,
+             pattern_spacing = sex_roles_classification)) +
+  geom_col_pattern(col = "white",
+                   pattern_fill = "white",
+                   pattern_color = "white") +
+  scale_fill_manual(values = rev(topic_colours)) +
+  scale_pattern_manual(values = rev(c("circle", "stripe", "none", "stripe", "stripe"))) +
+  scale_pattern_density_manual(values = rev(c(0.15, 0.005, 1, 0.005, 0.005))) +
+  scale_pattern_spacing_manual(values = rev(c(0.01, 0.015, 1, 0.015, 0.015))) +
+  scale_pattern_angle_manual(values = rev(c(45, 90, 0, 45, 0))) +
+  scale_y_discrete(labels = rev(c("Pre-copulatory\nsexual traits",
+                                  "Pre-copulatory\nintrasexual\ncompetition",
+                                  "Post-copulatory\nintrasexual\ncompetition",
+                                  "Mate choice",
+                                  "Remating and\neagerness to mate",
+                                  "Mating success",
+                                  "Mating patterns",
+                                  "Divorce and\nextra-pair processes",
+                                  "Sexual conflict\nand estimates of\nsexual selection"))) +
+  scale_x_continuous(expand = c(0.015, 0)) +
+  guides(fill = "none",
+         pattern = guide_legend(reverse = T),
+         pattern_angle = guide_legend(reverse = T),
+         pattern_spacing = guide_legend(reverse = T),
+         pattern_density = "none") +
+  labs(x = "Frequency of meta-analytical questions (%)",
+       y = "Topic",
+       pattern = "Sex focus",
+       pattern_spacing = "Sex focus",
+       pattern_angle = "Sex focus") +
+  theme_classic() +
+  theme(legend.position = c(-0.08, 1.03), 
+        legend.justification = "left",
+        legend.box = "horizontal",
+        legend.margin = margin(0),
+        legend.key = element_blank(),
+        legend.direction = "horizontal",
+        plot.margin = margin(t = 29,  # Top margin
+                             r = 5.5,  # Right margin
+                             b = 5.5,  # Bottom margin
+                             l = 5.5),
+        axis.title = element_text(size = 12),
+        axis.text.y = element_text(size = 10))
+```
+
+## Figure 9
+
+```{r message=FALSE, warning=FALSE, include=TRUE}
+reporting_appraisal_results %>% 
+  pivot_longer(cols = c(search_strings,
+                        search_repeatable,
+                        studies_screened,
+                        studies_excluded_with_motive,
+                        prisma,
+                        non_independence_phylogeny,
+                        non_independence_same_study,
+                        main_data,
+                        additional_data,
+                        metadata,
+                        scripts),
+               names_to = "variables") %>% 
+  count(variables, value) %>% 
+  group_by(variables) %>% 
+  mutate(total = sum(n),
+         prop = n/sum(n)) %>% 
+  mutate(value = factor(value,
+                        levels = c("Adequate",
+                                   "Substandard",
+                                   "Insufficient",
+                                   "Not applicable"))) %>% 
+  ggplot(aes(x = prop * 100,
+             y = variables,
+             fill = value,
+             pattern = value)) +
+  geom_col_pattern(pattern_angle = 45,
+                   pattern_fill = "#C2C2C2",
+                   pattern_color = "#C2C2C2",
+                   pattern_spacing = 0.03,
+                   pattern_density = 0.15) +
+  labs(x = "Frequency of traditional meta-analyses (%)",
+       y = "Methodological elements",
+       fill = "Appraisal",
+       pattern = "Appraisal") +
+  scale_pattern_manual(values = c(rep("none", 3), "circle")) +
+  scale_y_discrete(limits = rev(c("search_strings",
+                                  "search_repeatable",
+                                  "studies_screened",
+                                  "studies_excluded_with_motive",
+                                  "prisma",
+                                  "non_independence_same_study",
+                                  "non_independence_phylogeny",
+                                  "main_data",
+                                  "additional_data",
+                                  "metadata",
+                                  "scripts")),
+                   labels = rev(c("Search strings",
+                                  "Search repeatable",
+                                  "Number of studies\nscreened",
+                                  "Number of studies\nexcluded (with reasons)",
+                                  "PRISMA figure",
+                                  "Non-independence\nfrom same study",
+                                  "Non-independence\nfrom phylogeny",
+                                  "Main data",
+                                  "Additional data",
+                                  "Metadata",
+                                  "Analysis scripts")),
+                   expand = c(0, 0.55)) +
+  scale_x_continuous(expand = c(0.01, 0)) +
+  scale_fill_manual(values = rev(c("white",
+                                   "#BFBFBF",
+                                   "#7B7B7B",
+                                   "#363636"))) +
+  theme_classic() +
+  theme(plot.margin = unit(c(1.2, rep(0.3, 3)), "cm"),
+        legend.position = c(0.45, 1.05),
+        legend.direction = "horizontal",
+        legend.title = element_text(size = 12),
+        legend.text = element_text(size = 10),
+        axis.title.y = element_text(margin = margin(r = 0.3, unit = "cm"),
+                                    size = 12),
+        axis.title.x = element_text(margin = margin(t = 0.3, unit = "cm"),
+                                    size = 12),
+        axis.text = element_text(size = 10)) +
+  guides(fill = guide_legend(reverse = T),
+         pattern = guide_legend(reverse = T))
+
+```
+
+## Figure 10
+
+Here, we filter some results as there were few instances of alternative methods (e.g. unusual search sources).  
+
+```{r message=FALSE, warning=FALSE, include=TRUE}
+# search sources ----
+reporting_appraisal_results %>%
+  dplyr::select(study_id, search_sources) %>% 
+  separate(search_sources,
+           sep = ",",
+           into = paste0("search_source_", 
+                         1:(max(str_count(.$search_sources,
+                                          ",")) + 1))) %>% 
+  pivot_longer(starts_with("search")) %>% 
+  filter(!is.na(value)) %>% 
+  mutate(value = str_to_lower(str_trim(value))) %>% 
+  mutate(search_sources_mod = case_when(
+    value == "databases: web of science" ~ "Web of Science",
+    value == "databases: scopus" ~ "Scopus",
+    value == "google scholar" ~ "Google Scholar",
+    value == "backward citations of key papers" ~ "Key papers' BC",
+    value == "forward citations of key papers" ~ "Key papers' FC",
+    value == "backward citations of initially selected papers" ~ "Initially selected\npapers' BC",
+    value == "forward citations of initially selected papers" ~ "Initially selected\npapers' FC",
+    value == "other databases that cover only published studies" ~ "Other databases\n(only published)",
+    value == "other databases that also cover grey literature" ~ "Other databases with\nunpublished studies",
+    value == "manual inclusion of papers" ~ "Manual inclusion",
+    value == "biological abstracts (cd-rom)" ~ "Other databases with\nonly published studies",
+    value == "requests" ~ "Direct requests or\npersonal communication",
+    value == "personal communication" ~ "Direct requests or\npersonal communication",
+    value == "list of specific journals" ~ "Specific journals",
+    TRUE ~ str_to_sentence(value))) %>% 
+  count(search_sources_mod) %>% 
+  arrange(desc(n)) %>% 
+  filter(n > 10) %>%
+  mutate(pattern_circ = ifelse(search_sources_mod == "Unclear", T, F)) %>% 
+  ggplot(aes(y = reorder(search_sources_mod, n),
+             x = n,
+             pattern = pattern_circ)) +
+  geom_col_pattern(fill = "darkgrey",
+                   pattern_angle = 45,
+                   pattern_fill = "white",
+                   pattern_color = "white",
+                   pattern_spacing = 0.03,
+                   pattern_density = 0.15) +
+  labs(y = "Search sources",
+       x = "Number of traditional\nmeta-analyses") +
+  scale_pattern_manual(values = c("none", "circle")) +
+  guides(pattern = element_blank()) +
+  theme_classic() + 
+  theme(legend.position = "none",
+        axis.title.x = element_text(margin = margin(t = 0.3, 
+                                                    unit = "cm"),
+                                    size = 12),
+        axis.title.y = element_text(margin = margin(r = 0.3, 
+                                                    unit = "cm"),
+                                    size = 12),
+        axis.text = element_text(size = 10))
+```
+
+```{r message=FALSE, warning=FALSE, include=TRUE}
+# software ----
+reporting_appraisal_results %>%
+  dplyr::select(study_id, software) %>% 
+  mutate(software = str_to_lower(replace(.$software,
+                                         is.na(.$software),
+                                         "unclear"))) %>% 
+  separate(software, 
+           sep = ";",
+           into = paste0("soft",
+                         1:3)) %>% 
+  pivot_longer(cols = starts_with("soft")) %>% 
+  filter(!is.na(value)) %>% 
+  mutate(value = str_trim(str_remove_all(str_trim(value),
+                                         "\\(in r\\)"))) %>% 
+  count(value) %>% 
+  arrange(desc(n)) %>% 
+  mutate(value_adj = ifelse(n < 3, "other", value)) %>% 
+  group_by(value_adj) %>%
+  summarise(n = sum(n)) %>% 
+  ggplot(aes(y = value_adj,
+             x = n,
+             pattern = ifelse(value_adj == "unclear", T, F))) +
+  geom_col_pattern(fill = "darkgrey",
+                   pattern_angle = 45,
+                   pattern_fill = "white",
+                   pattern_color = "white",
+                   pattern_spacing = 0.03,
+                   pattern_density = 0.15) +
+  scale_y_discrete(limits = c("phylometa",
+                              "metawin",
+                              "unclear",
+                              "other",
+                              "package mcmcglmm",
+                              "package metafor"),
+                   labels = c("Phylometa",
+                              "MetaWin",
+                              "Unclear",
+                              "Others",
+                              "MCMCglmm\n(R package)",
+                              "metafor\n(R package)")) +
+  scale_pattern_manual(values = c("none", 
+                                  "circle")) +
+  labs(y = "Software used for inference",
+       x = "Number of traditional\nmeta-analyses") +
+  theme_classic() +
+  theme(legend.position = "none",
+        axis.title.x = element_text(margin = margin(t = 0.3, 
+                                                    unit = "cm"),
+                                    size = 12),
+        axis.title.y = element_text(margin = margin(r = 0.3, 
+                                                    unit = "cm"),
+                                    size = 12),
+        axis.text = element_text(size = 10))
+```
+
+```{r message=FALSE, warning=FALSE, include=TRUE}
+# heterogeneity ----
+reporting_appraisal_results %>% 
+  dplyr::select(study_id, heterogeneity) %>% 
+  separate(heterogeneity, 
+           sep = ",",
+           into = paste0("heterogeneity",
+                         1:3)) %>% 
+  pivot_longer(cols = starts_with("heterogeneity")) %>% 
+  filter(!is.na(value)) %>% 
+  mutate(value = str_trim(value)) %>%
+  mutate(value = ifelse(value == "chi-square test",
+                        "Q",
+                        str_to_sentence(value))) %>% 
+  count(value) %>% 
+  # filter(n >10) %>% 
+  ggplot(aes(y = value,
+             x = n,
+             pattern = ifelse(value == "None", T, F))) +
+  geom_col_pattern(fill = "darkgrey",
+                   pattern_angle = 45,
+                   pattern_fill = "white",
+                   pattern_color = "white",
+                   pattern_spacing = 0.03,
+                   pattern_density = 0.15) +
+  scale_pattern_manual(values = c("none", "circle")) +
+  scale_y_discrete(limits = rev(c("Q",
+                                  "I_2",
+                                  "None",
+                                  "Tau_2")),
+                   labels = rev(c("Q",
+                                  bquote(~I^2),
+                                  "None",
+                                  bquote(~tau^2)))) +
+  labs(y = "Heterogeneity measures",
+       x = "Number of traditional\nmeta-analyses") +
+  theme_classic() +
+  theme(legend.position = "none",
+        axis.title.x = element_text(margin = margin(t = 0.3, 
+                                                    unit = "cm"),
+                                    size = 12),
+        axis.title.y = element_text(margin = margin(r = 0.3, 
+                                                    unit = "cm"),
+                                    size = 12),
+        axis.text = element_text(size = 10))
+```
+
+```{r message=FALSE, warning=FALSE, include=TRUE}
+# publication bias ----
+reporting_appraisal_results %>% 
+  dplyr::select(study_id, publication_bias_investigated) %>% 
+  separate(publication_bias_investigated, 
+           sep = ",",
+           into = paste0("bias",
+                         1:5)) %>% 
+  pivot_longer(cols = starts_with("bias")) %>% 
+  filter(!is.na(value)) %>% 
+  mutate(value = str_trim(value)) %>%
+  count(value) %>% 
+  filter(n > 5) %>%
+  ggplot(aes(y = value,
+             x = n,
+             pattern = ifelse(value == "None", T, F))) +
+  geom_col_pattern(fill = "darkgrey",
+                   pattern_angle = 45,
+                   pattern_fill = "white",
+                   pattern_color = "white",
+                   pattern_spacing = 0.03,
+                   pattern_density = 0.15) +
+  scale_pattern_manual(values = c("none", "circle")) +
+  scale_y_discrete(limits = rev(c("Funnel plots",
+                                  "Regression-based methods",
+                                  "Trim-and-fill tests",
+                                  "Correlation-based methods",
+                                  "Time-lag bias tests",
+                                  "Fail-safe N",
+                                  "None")),
+                   labels = rev(c("Funnel plots",
+                                  "Regression",
+                                  "Trim-and-fill",
+                                  "Correlation",
+                                  "Time-lag bias",
+                                  "Fail-safe N",
+                                  "None"))) +
+  labs(y = "Publication bias assessments",
+       x = "Number of traditional\nmeta-analyses") +
+  theme_classic() +
+  theme(legend.position = "none",
+        axis.title.x = element_text(margin = margin(t = 0.3, 
+                                                    unit = "cm"),
+                                    size = 12),
+        axis.title.y = element_text(margin = margin(r = 0.3, 
+                                                    unit = "cm"),
+                                    size = 12),
+        axis.text = element_text(size = 10))
+
+```
+
+## Figure 11
+
+```{r message=FALSE, warning=FALSE, include=TRUE}
+countries_to_find <- c(sort(str_to_upper(unique(map_data("world")$region))), 
+                       "UNITED STATES", 
+                       "UNITED KINGDOM")
+
+countries_to_find <- countries_to_find[countries_to_find != "USA"]
+countries_to_find <- countries_to_find[countries_to_find != "UK"]
+
+affiliations_long_format <-
+  affiliations %>% 
+  mutate(row_id = row_number(),
+         certified_countries = str_to_title(
+           purrr::map_chr(
+             str_extract_all(
+               .$affiliations,
+               paste(countries_to_find, 
+                     collapse = "|")), 
+             ~ paste(., 
+                     collapse = ", ")))) %>% 
+  separate(certified_countries,
+           sep = ", ",
+           into = paste0("affil_",
+                         1:(max(str_count(.$certified_countries,
+                                          ",")) + 1))) %>% 
+  pivot_longer(cols = starts_with("affil_"),
+               names_to = "affil_order",
+               names_prefix = "affil_",
+               values_to = "country") %>% 
+  filter(!is.na(country)) %>% 
+  mutate(region = ifelse(country %in% c("United States", 
+                                        "Usa",
+                                        "Georgia"), 
+                         "USA",
+                         ifelse(country %in% c("United Kingdom", 
+                                               "Uk"),
+                                "UK",
+                                ifelse(country == "Mali",
+                                       "Mexico",
+                                       country)))) %>% 
+  mutate(continent = case_when(region %in% c("USA", 
+                                             "Canada") ~ "Anglo America",
+                               region %in% c("Brazil", 
+                                             "Argentina", 
+                                             "Mexico", 
+                                             "Costa Rica") ~ "Latin America",
+                               region %in% c("China",
+                                             "Japan",
+                                             "India",
+                                             "Taiwan",
+                                             "Iran") ~ "Asia",
+                               region %in% c("Australia",
+                                             "New Zealand") ~ "Oceania",
+                               TRUE ~ "Europe")) %>% 
+  group_by(row_id) %>% 
+  distinct(region, 
+           .keep_all = T) %>% 
+  mutate(total_number_countries = n()) %>% 
+  ungroup()
+
+affiliations_summarised <-
+  affiliations_long_format %>% 
+  dplyr::select(row_id, 
+                region,
+                continent,
+                total_number_authors,
+                total_number_countries) %>% 
+  distinct(row_id, 
+           .keep_all = T)
+
+affiliations_summarised %>%
+  summarise(across(c(total_number_authors, total_number_countries),
+                   list(median = median,
+                        mean = mean,
+                        CI_upper = function (x) {mean(x) + (1.96 * sd(x) / sqrt(length(x)))},
+                        CI_lower = function (x) {mean(x) - (1.96 * sd(x) / sqrt(length(x)))}))) %>% 
+  t() %>% 
+  data.frame(statistic = row.names(.), value = .) %>% 
+  tibble()
+```
+
+```{r message=FALSE, warning=FALSE, include=TRUE}
+# scatter plot ----
+affiliations_summarised %>%
+  ggplot() +
+  geom_jitter(aes(x = total_number_authors,
+                  y = total_number_countries),
+              height = 0.1,
+              width = 0.2,
+              alpha = 0.5,
+              fill = "black",
+              shape = 1) +
+  geom_abline(slope = 1,
+              lty = "dotted") +
+  geom_smooth(aes(x = total_number_authors,
+                  y = total_number_countries),
+              col = "black",
+              method = "lm", 
+              se = T) +
+  scale_y_continuous(breaks = seq(1, 12, 1)) +
+  scale_x_continuous(breaks = seq(1, 12, 1)) +
+  labs(x = "Number of authors per meta-analytical study",
+       y = "Number of countries\nlisted as affiliations",
+       shape = "Continent of first affiliation") +
+  theme_classic() +
+  theme(legend.position = "top",
+        axis.title.x = element_text(margin = margin(t = 0.3, 
+                                                    unit = "cm"),
+                                    size = 12),
+        axis.title.y = element_text(margin = margin(r = 0.3, 
+                                                    unit = "cm"),
+                                    size = 12),
+        axis.text = element_text(size = 10))
+```
+
+
+```{r message=FALSE, warning=FALSE, include=TRUE}
+# bar plot on the right ----
+affiliations_summarised %>%
+  ggplot(aes(y = total_number_countries)) +
+  geom_histogram(binwidth = 1,
+                 fill = "grey",
+                 col = "white")  +
+  labs(x = "Count") +
+  scale_y_continuous(expand = c(0, 0),
+                     breaks = seq(0, 60, by = 20)) +
+  scale_x_continuous(expand = c(0, 0)) +
+  theme_classic() +
+  theme(plot.margin = margin(t = 0,  # Top margin
+                             r = 0,  # Right margin
+                             b = 0,  # Bottom margin
+                             l = 0),
+        axis.line.y = element_blank(),
+        axis.text.y = element_blank(), 
+        axis.title.y = element_blank(), 
+        axis.ticks.length.y = unit(0, "pt"),
+        axis.title.x = element_text(margin = margin(t = 0.3, 
+                                                    unit = "cm"),
+                                    size = 12),
+        axis.text.x = element_text(size = 10))
+```
+
+```{r message=FALSE, warning=FALSE, include=TRUE}
+affiliations_summarised %>%
+  ggplot(aes(x = total_number_authors)) +
+  geom_histogram(binwidth = 1,
+                 fill = "grey",
+                 col = "white")  +
+  labs(y = "Count") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0),
+                     breaks = seq(0, 60, by = 20)) +
+  theme_classic() +
+  theme(plot.margin = margin(t = 0,  # Top margin
+                             r = 0,  # Right margin
+                             b = 0,  # Bottom margin
+                             l = 0),
+        axis.line.x = element_blank(),
+        axis.text.x = element_blank(), 
+        axis.title.x = element_blank(), 
+        axis.ticks.length.x = unit(0, "pt"),
+        axis.title.y = element_text(margin = margin(r = 0.3, 
+                                                    unit = "cm"),
+                                    size = 12),
+        axis.text.y = element_text(size = 10))
+```
+
+## Figure 12
+
+```{r message=FALSE, warning=FALSE, include=TRUE}
+first_affiliation <-
+  affiliations_summarised %>% 
+  group_by(region) %>% 
+  summarise(n_first = n()) %>% 
+  arrange(desc(n_first))
+
+all_affiliations <-
+  affiliations_long_format %>% 
+  group_by(row_id) %>% 
+  distinct(region) %>% 
+  ungroup() %>%
+  group_by(region) %>% 
+  summarise(n_all = n()) %>% 
+  arrange(desc(n_all))
+
+joined_affiliations <-
+  first_affiliation %>% 
+  full_join(all_affiliations, 
+            by = "region") %>%
+  mutate(n_first_0 = replace_na(n_first,
+                                0)) %>% 
+  mutate(prop_first = n_first_0 / n_all)
+
+world_map <- 
+  map_data("world") %>% 
+  filter(! long > 180) %>%
+  left_join(joined_affiliations, 
+            by = "region")
+
+# map colours ----
+map_gradient <- c("#E9CFFE",
+                  "#5006B8")
+
+```
+
+```{r message=FALSE, warning=FALSE, include=TRUE}
+# map ----
+world_map %>%
+  ggplot(aes(x = long,
+             y = lat)) +
+  geom_polygon(aes(x = long,
+                   y = lat,
+                   fill = n_all, 
+                   group = group),
+               col = "white",
+               linewidth = 0.05) +
+  coord_map("mollweide",
+            xlim = c(-149, 150)) +
+  labs(fill = "Papers with\naffiliation") +
+  scale_fill_gradient(low = map_gradient[1],
+                      high = map_gradient[2],
+                      na.value = "grey",
+                      limits = c(1, max(world_map$n_all)),
+                      breaks = seq(10, 40, by = 10)) +
+  theme(plot.margin = unit(c(0, 0, 0, 0), "cm"),
+        legend.position = 'left',
+        axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        axis.title = element_blank(),
+        rect = element_blank())
+```
+
+```{r message=FALSE, warning=FALSE, include=TRUE}
+# barplot ----
+joined_affiliations %>% 
+  ggplot(aes(x = prop_first * 100,
+             y = fct_reorder(region, 
+                             desc(prop_first)),
+             label = paste0("n = ", 
+                            n_all))) +
+  geom_col(fill = "grey") +
+  geom_text(hjust = c(rep(1, 23), rep(0, 8)),
+            nudge_x = c(rep(-0.5, 23), rep(0.5, 8)),
+            nudge_y = 0.02,
+            col = c(rep("white", 23), rep("black", 8)),
+            size = 3) +
+  labs(x = "Frequency of first affiliations relative to all affiliations (%)",
+       y = "Country") +
+  scale_x_continuous(expand = c(0.005, 0)) +
+  theme_classic() +
+  theme(legend.position = "none",
+        plot.margin = unit(c(0.2, 0.6, 0.6, 0.2), "cm"),
+        axis.title.x = element_text(margin = margin(t = 0.3, unit = "cm"),
+                                    size = 12),
+        axis.title.y = element_text(margin = margin(r = 0.3, unit = "cm"),
+                                    size = 12),
+        axis.text = element_text(size = 10))
+```
+
+## Figure 13
+
+```{r message=FALSE, warning=FALSE, include=TRUE}
+biblio_edges <- 
+  affiliations_long_format %>% 
+  group_by(row_id, region) %>% 
+  distinct(continent,
+           .keep_all = T) %>%
+  dplyr::select(row_id,
+                region,
+                continent) %>% 
+  ungroup() %>% 
+  dplyr::select(- region) %>% 
+  group_by(row_id) %>% 
+  mutate(country_id = paste0("continent_", row_number())) %>% 
+  ungroup() %>% 
+  pivot_wider(id_cols = row_id,
+              names_from = country_id,
+              values_from = continent) %>% 
+  rename(first_aff_continent = continent_1) %>% 
+  pivot_longer(cols = starts_with("continent"),
+               names_to = "aff_number",
+               values_to = "other_aff_continent",
+               names_prefix = "continent_") %>% 
+  filter(!is.na(other_aff_continent)) %>% 
+  group_by(row_id) %>% 
+  distinct(other_aff_continent, 
+           .keep_all = T) %>% 
+  ungroup() %>% 
+  group_by(first_aff_continent,
+           other_aff_continent) %>% 
+  summarise(count = n())
+
+biblio_nodes <- 
+  tibble(continent = c("Anglo America",
+                       "Asia",
+                       "Europe",
+                       "Latin America",
+                       "Oceania"),
+         latitude = c(48.932080, 
+                      38.294253,
+                      50.061417,
+                      -1.197121, 
+                      -35.696837),
+         longitude = c(-97.383830,
+                       79.129769,
+                       6.267847,
+                       -67.777361,
+                       161.443421)) %>% 
+  left_join(affiliations_summarised %>%
+              filter(total_number_countries > 1) %>% 
+              count(continent),
+            by = "continent")
+
+## directed graph -----
+biblio_g <- 
+  biblio_edges %>% 
+  mutate(first_aff_continent = factor(first_aff_continent,
+                                      levels = c("Oceania",
+                                                 "Asia",
+                                                 "Europe",
+                                                 "Anglo America",
+                                                 "Latin America"))) %>% 
+  arrange(first_aff_continent) %>% 
+  as_tbl_graph()
+
+V(biblio_g)$name <- paste0(c("Oceania",
+                             "Asia",
+                             "Europe",
+                             "Anglo\nAmerica",
+                             "Latin\nAmerica"),
+                           "\nn = ",
+                           biblio_nodes$n[c(5, 2, 3, 1, 4)])
+
+biblio_g %>% 
+  ggraph(layout = "linear",
+         circular = TRUE) +
+  geom_edge_fan(arrow = arrow(length = unit(1.5, 'mm'),
+                              type = "closed"), 
+                start_cap = circle(10, 'mm'),
+                end_cap = circle(10, 'mm'),
+                aes(width = count)) +
+  geom_edge_loop(arrow = arrow(length = unit(1.5, 'mm'),
+                               type = "closed"), 
+                 start_cap = circle(10, 'mm'),
+                 end_cap = circle(10, 'mm'),
+                 aes(width = count,
+                     direction = (from - 1.8) * 360 / length(biblio_g)),
+                 check_overlap = T) +
+  geom_node_text(aes(label = name)) +
+  scale_y_reverse() +
+  scale_edge_width_continuous(range = c(0.1, 2.5),
+                              breaks = seq(min(E(biblio_g)$count), 
+                                           max(E(biblio_g)$count),
+                                           by = 17)) +
+  coord_fixed() +
+  labs(edge_width = "International\ncollaborations") +
+  theme_void() +
+  theme(legend.title = element_text(size = 12),
+        legend.text = element_text(size = 10),
+        legend.position = c(0.95, 0.85),
+        legend.direction = "vertical",
+        plot.margin = unit(c(1, 0, 0, 0), 
+                           "cm"))
+```
+
+```{r message=FALSE, warning=FALSE, include=TRUE}
+# barplot ----
+affiliations_summarised %>% 
+  count(continent, total_number_countries) %>% 
+  ggplot(aes(y = fct_reorder(continent, n),
+             x = n,
+             fill = total_number_countries < 2)) +
+  geom_col() +
+  scale_y_discrete(expand = c(0.12, 0)) +
+  scale_x_continuous(expand = c(0.005, 0)) +
+  scale_fill_manual(values = c("#363636",
+                               "#BFBFBF"),
+                    labels = c("Multiple countries",
+                               "Single country"),
+                    guide = "legend") +
+  labs(x = "Number of meta-analytical studies",
+       y = "Continent of first affiliation listed",
+       fill = "Authorship") +
+  guides(fill = guide_legend(reverse = T)) +
+  theme_classic() +
+  theme(axis.title.x = element_text(margin = margin(t = 0.3, unit = "cm"),
+                                    size = 12),
+        axis.title.y = element_text(margin = margin(r = 0.3, unit = "cm"),
+                                    size = 12),
+        axis.text = element_text(size = 10),
+        legend.title = element_text(size = 12),
+        legend.text = element_text(size = 10),
+        legend.position = "top",
+        legend.direction = "horizontal")
+```
+
+## Figure 14 
+
+```{r message=FALSE, warning=FALSE, include=TRUE}
+gender %>% 
+  filter(author_order == 1) %>% 
+  group_by(manual_gender) %>% 
+  summarise(count = n(),
+            prop = n()/nrow(.))
+```
+
+```{r message=FALSE, warning=FALSE, include=TRUE}
+# barplot ----
+gender_df <- 
+  gender %>% 
+  group_by(title, manual_gender) %>% 
+  distinct(author_complete_name) %>%
+  summarise(n = n()) %>% 
+  ungroup() %>% 
+  pivot_wider(id_cols = title,
+              names_from = manual_gender,
+              values_from = n) %>% 
+  filter(is.na(`NA`)) %>% 
+  mutate(female = replace_na(female, 0),
+         male = replace_na(male, 0)) %>% 
+  mutate(n_authors = female + male,
+         prop_women = female / (female + male)) %>% 
+  left_join(gender %>% 
+              filter(author_order == 1) %>% 
+              mutate(first_author_gender = manual_gender) %>% 
+              select(title,
+                     first_author_gender)) 
+
+gender_df %>% 
+  filter(n_authors < 6) %>%
+  ggplot(aes(x = n_authors,
+             fill = first_author_gender)) +
+  geom_histogram(binwidth = 1,
+                 col = "white") +
+  labs(y = "Count") +
+  scale_y_continuous(expand = c(0, 0.1),
+                     breaks = seq(0, 
+                                  60, 
+                                  by = 20)) +
+  scale_x_continuous(expand = c(0, 0),
+                     limits = c(0.5, 6.15)) +
+  scale_fill_manual(values = c("#363636",
+                               "#BFBFBF")) +
+  theme_classic() +
+  theme(plot.margin = margin(t = 0,  # Top margin
+                             r = 0,  # Right margin
+                             b = 5,  # Bottom margin
+                             l = 0),
+        axis.line.x = element_blank(),
+        axis.text.x = element_blank(), 
+        axis.title.x = element_blank(), 
+        axis.ticks.length.x = unit(0, "pt"),
+        axis.title.y = element_text(margin = margin(r = 0.3, 
+                                                    unit = "cm"),
+                                    size = 12),
+        axis.text.y = element_text(size = 10)) +
+  guides(fill = FALSE)
+
+```
+
+
+```{r message=FALSE, warning=FALSE, include=TRUE}
+# main plot ----
+gender_df_specific <-
+  gender_df %>% 
+  count(n_authors, 
+        first_author_gender, 
+        prop_women) %>% 
+  group_by(n_authors,
+           first_author_gender) %>% 
+  mutate(prop = n / sum(n)) %>% 
+  filter(n_authors < 6) %>% 
+  pivot_wider(id_cols = c(n_authors, prop_women),
+              names_from = first_author_gender,
+              values_from = prop) %>% 
+  mutate(across(c(female, male),
+                ~ replace_na(.,
+                             0))) %>% 
+  mutate(gender_foreground = ifelse(female < male,
+                                    "female",
+                                    "male")) %>% 
+  pivot_longer(cols = c(female, male),
+               names_to = "first_author_gender",
+               values_to = "prop") %>% 
+  filter(prop > 0)
+
+background_points <-
+  gender_df_specific %>% 
+  filter(gender_foreground != first_author_gender)
+
+foreground_points <-
+  gender_df_specific %>% 
+  filter(gender_foreground == first_author_gender)
+
+ggplot() +
+  lapply(1:5, function(i) {
+    line <- geom_function(fun = function(x) {i * 100/x},
+                          linewidth = 0.1,
+                          xlim = c(1, 5.3))
+    list(line)
+  }) +
+  geom_function(fun = function(x) {0},
+                linewidth = 0.1,
+                xlim = c(1, 5.4)) +
+  geom_hline(yintercept = 50,
+             linetype = "dotted") +
+  geom_point(data = background_points,
+             aes(x = n_authors,
+                 y = prop_women * 100,
+                 size = prop,
+                 shape = first_author_gender,
+                 col = first_author_gender)) +
+  geom_point(data = foreground_points,
+             aes(x = n_authors,
+                 y = prop_women * 100,
+                 size = prop,
+                 shape = first_author_gender,
+                 col = first_author_gender)) +
+  annotate("text",
+           x = 5.75,
+           y = (0:5) * 100 /5.3,
+           label = c("0 women",
+                     "1 woman",
+                     paste0(2:5, " women"))) +
+  labs(x = "Number of authors in meta-analytical studies",
+       y = "Frequency of women as authors (%)",
+       shape = "First author",
+       col = "First author") +
+  scale_shape_manual(values = c(16, 15),
+                     labels = c("Woman",
+                                "Man")) +
+  scale_colour_manual(values = c("#363636",
+                                 "#BFBFBF"),
+                      labels = c("Woman",
+                                 "Man")) +
+  scale_size(range = c(1, 10)) +
+  scale_x_continuous(breaks = seq(1, 5, 1),
+                     limits = c(0.55, 6.1),
+                     expand = c(0, 0)) +
+  scale_y_continuous(limits = c(0, 100)) +
+  theme_classic() +
+  theme(legend.position = "right",
+        legend.title = element_text(size = 12),
+        legend.text = element_text(size = 10),
+        axis.title.x = element_text(margin = margin(t = 0.3, 
+                                                    unit = "cm"),
+                                    size = 12),
+        axis.title.y = element_text(margin = margin(r = 0.3, 
+                                                    unit = "cm"),
+                                    size = 12),
+        axis.text = element_text(size = 10)) +
+  guides(size = FALSE,
+         shape = guide_legend(override.aes = list(size = 6)))
+```
+
+## Figure 15
+
+```{r message=FALSE, warning=FALSE, include=TRUE}
+questions_modality %>% 
+  count(modality)
+
+questions_modality %>% 
+  distinct(study_id, .keep_all = T) %>% 
+  count(modality) %>%
+  mutate(unclear = ifelse(modality == "Unclear",
+                          T, 
+                          F)) %>% 
+  ggplot(aes(y = modality,
+             x = n,
+             pattern = unclear)) +
+  geom_bar_pattern(stat = "identity",
+                   fill = "darkgrey",
+                   pattern_fill = "white",
+                   pattern_color = "white",
+                   pattern_spacing = 0.03,
+                   pattern_density = 0.15,
+                   pattern_angle = 45) +
+  scale_x_continuous(expand = c(0, 0.4)) +
+  scale_y_discrete(limits = rev(c("Only visual",
+                                  "Only acoustic",
+                                  "Visual, acoustic, and others",
+                                  "Visual and acoustic",
+                                  "Unclear")),
+                   labels = rev(c("Only\nvisual",
+                                  "Only\nacoustic",
+                                  "Visual,\nacoustic,\nand others",
+                                  "Visual and\nacoustic",
+                                  "Unclear")),
+                   expand = c(0, 0.5)) +
+  scale_pattern_manual(values = c("none", "circle")) +
+  labs(y = "Modality of traits used",
+       x = "Number of meta-analytical studies from 'Pre-copulatory sexual traits' category") +
+  theme_classic() +
+  theme(legend.position = "none",
+        plot.margin = unit(c(0.6, 0.2, 0.2, 0.6), "cm"),
+        axis.title.x = element_text(margin = margin(t = 0.3, unit = "cm")),
+        axis.title.y = element_text(margin = margin(r = 0.3, unit = "cm")))
+```
+
